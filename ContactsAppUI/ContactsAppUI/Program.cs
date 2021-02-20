@@ -18,6 +18,10 @@ namespace ContactsAppUI
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
+            
+
+            PhoneNumber phone = new PhoneNumber();
+            phone.NumberPhone = "79964156633";
         }
     }
 }
