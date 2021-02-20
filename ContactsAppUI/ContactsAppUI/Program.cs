@@ -22,6 +22,9 @@ namespace ContactsAppUI
 
             PhoneNumber phone = new PhoneNumber();
             phone.NumberPhone = "79964156633";
+            Contact contact = new Contact("Petrov","Ivan","799964156633",
+                new DateTime(2000,08,12),"bogruina@gmail.com","id121212");
+           
         }
     }
 }

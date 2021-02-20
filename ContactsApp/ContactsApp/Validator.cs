@@ -13,37 +13,19 @@ namespace ContactsApp
     /// </summary>
     public static class Validator
     {
-        /// <summary>
-        ///  Метод осуществляет проверку введенного номера телефона на соответствие требованиям
-        /// </summary>
-        /// <param name="phoneNumber"> Принимает введенный номер телефона </param>
-       public static void ValidationPhoneNumber(string phoneNumber)
-       {
-           foreach (var var in phoneNumber)
-           {
 
-               if (!char.IsDigit(var))
-               {
-                   throw new ArgumentException("Строка должна содержать только цифры");
-               }
-           }
-
-            int i = 0;
-            foreach (var b in phoneNumber)
+        public static void ContactValidator(string value)
+        {
+            if (string.IsNullOrEmpty(value))
             {
-                i++;
+                throw new ArgumentException("Вы ввели пустую строку.");
             }
 
-            if (i > 11 || i < 11) 
+            if (value.Length > 50)
             {
-                throw new ArgumentException("Номер должен состоять ровно из 11 цифр");
+                throw new ArgumentException("Длина имени, фамилии и e-mail должно быть меньше 50 символов.");
             }
-
-            if (phoneNumber[0] != '7')
-            {
-                throw new ArgumentException("Код страны должен равнятся 7");
-            }
-       }
+        }
 
 
     }
