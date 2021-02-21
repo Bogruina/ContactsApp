@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ContactsApp
 {
-    public class Contact : PhoneNumber
+    public class Contact : PhoneNumber, ICloneable
     {
         private string _surename;
         private string _name;
@@ -102,6 +102,20 @@ namespace ContactsApp
             DateOfBirth = dateOfBirth;
             Email = email;
             IdVk = idVk;
+        }
+
+        public object Clone()
+        {
+            return new Contact(Surename,Name,NumberPhone,DateOfBirth,Email,IdVk)
+            {
+                Surename = this.Surename,
+                Name = this.Name,
+                NumberPhone = this.NumberPhone,
+                DateOfBirth = this.DateOfBirth,
+                Email = this.Email,
+                IdVk = this.IdVk
+                    
+            };
         }
     }
 }
