@@ -4,8 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace ContactsApp
 {
+    /// <summary>
+    /// Класс 
+    /// </summary>
     public class PhoneNumber
     {
         private string _numberPhone;
@@ -37,6 +41,11 @@ namespace ContactsApp
                 }
                 _numberPhone = value;
             }
+        }
+
+        public PhoneNumber(string numberPhone)
+        {
+            NumberPhone = numberPhone;
         }
     }
 }
