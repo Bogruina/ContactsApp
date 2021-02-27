@@ -13,7 +13,10 @@ namespace ContactsApp
     /// </summary>
     public static class Validator
     {
-
+        /// <summary>
+        /// Статический метод проверяет подходит ли строка с именем, фамилией и e-mail по требованиям.
+        /// </summary>
+        /// <param name="value"></param>
         public static void ContactValidator(string value)
         {
             if (string.IsNullOrEmpty(value))

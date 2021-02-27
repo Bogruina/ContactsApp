@@ -8,34 +8,66 @@ using  System.IO;
 
 namespace ContactsApp
 {
+    /// <summary>
+    /// Класс позволяет сохранять в файл и извлекать из файла список контактов
+    /// </summary>
     public static class Manager
     {
         private const string FilePath = @"C:\ContactsApp\ContactsApp.json";
 
-        public static void SaveToFile(Contact data)
+        /// <summary>
+        /// Метод сериализации
+        /// </summary>
+        /// <param name="data">Принимает список контактов</param>
+        public static void SaveToFile(List<Contact> data)
         {
             JsonSerializer serializer = new JsonSerializer();
             using (StreamWriter sw = new StreamWriter(FilePath))
             using (JsonWriter writer = new JsonTextWriter(sw))
             {
-                
-                serializer.Serialize(writer, data);
+                serializer.Formatting = Formatting.Indented;
+                for (int i = 0; i < data.Count; i++)
+                {
+
+                    serializer.Serialize(writer, data[i]);
+                }
+
             }
-           
+
 
         }
 
+        /// <summary>
+        /// Метод десериализации
+        /// </summary>
+        /// <returns></returns>
         public static Contact LoadFromFile()
         {
-            Contact contact = null;
+
+
+
+            JsonSerializerSettings settings = new JsonSerializerSettings()
+            {
+                TypeNameHandling = Newtonsoft.Json.TypeNameHandling.All
+            };
+
+            
             JsonSerializer serializer = new JsonSerializer();
             using (StreamReader sr = new StreamReader(FilePath))
             using (JsonReader reader = new JsonTextReader(sr))
             {
-                //Вызываем десериализацию и явно преобразуем результат в целевой тип данных
-                contact = (Contact)serializer.Deserialize<Contact>(reader);
+                
+                Contact contact = (Contact)serializer.Deserialize(reader,typeof(Contact));
+                
                 return contact;
+
             }
+          
+
+            //Contact contact;
+            //contact = JsonConvert.DeserializeObject<Contact>(serializer, settings);
+            //Audio audio = newList.list[0] as Audio; // != null
         }
     }
 }
+
