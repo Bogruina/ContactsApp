@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.ContactsListBox = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -42,6 +43,7 @@
             this.PhoneTextBox = new System.Windows.Forms.TextBox();
             this.BirthdayDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.AddContactButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -56,7 +58,7 @@
             this.ContactsListBox.FormattingEnabled = true;
             this.ContactsListBox.Location = new System.Drawing.Point(3, 12);
             this.ContactsListBox.MaximumSize = new System.Drawing.Size(800, 600);
-            this.ContactsListBox.MinimumSize = new System.Drawing.Size(200, 0);
+            this.ContactsListBox.MinimumSize = new System.Drawing.Size(200, 4);
             this.ContactsListBox.Name = "ContactsListBox";
             this.ContactsListBox.Size = new System.Drawing.Size(275, 394);
             this.ContactsListBox.TabIndex = 0;
@@ -135,6 +137,7 @@
             this.SurnameTextBox.Location = new System.Drawing.Point(72, 19);
             this.SurnameTextBox.MinimumSize = new System.Drawing.Size(150, 20);
             this.SurnameTextBox.Name = "SurnameTextBox";
+            this.SurnameTextBox.ReadOnly = true;
             this.SurnameTextBox.Size = new System.Drawing.Size(339, 20);
             this.SurnameTextBox.TabIndex = 7;
             this.SurnameTextBox.TextChanged += new System.EventHandler(this.SurnameTextBox_TextChanged_1);
@@ -146,6 +149,7 @@
             this.NameTextBox.Location = new System.Drawing.Point(72, 43);
             this.NameTextBox.MinimumSize = new System.Drawing.Size(150, 20);
             this.NameTextBox.Name = "NameTextBox";
+            this.NameTextBox.ReadOnly = true;
             this.NameTextBox.Size = new System.Drawing.Size(339, 20);
             this.NameTextBox.TabIndex = 8;
             this.NameTextBox.TextChanged += new System.EventHandler(this.NameTextBox_TextChanged);
@@ -157,8 +161,10 @@
             this.IdVkTextBox.Location = new System.Drawing.Point(72, 141);
             this.IdVkTextBox.MinimumSize = new System.Drawing.Size(150, 20);
             this.IdVkTextBox.Name = "IdVkTextBox";
+            this.IdVkTextBox.ReadOnly = true;
             this.IdVkTextBox.Size = new System.Drawing.Size(339, 20);
             this.IdVkTextBox.TabIndex = 9;
+            this.IdVkTextBox.TextChanged += new System.EventHandler(this.IdVkTextBox_TextChanged);
             // 
             // EmailTextBox
             // 
@@ -167,8 +173,10 @@
             this.EmailTextBox.Location = new System.Drawing.Point(72, 116);
             this.EmailTextBox.MinimumSize = new System.Drawing.Size(150, 20);
             this.EmailTextBox.Name = "EmailTextBox";
+            this.EmailTextBox.ReadOnly = true;
             this.EmailTextBox.Size = new System.Drawing.Size(339, 20);
             this.EmailTextBox.TabIndex = 10;
+            this.EmailTextBox.TextChanged += new System.EventHandler(this.EmailTextBox_TextChanged);
             // 
             // PhoneTextBox
             // 
@@ -177,18 +185,23 @@
             this.PhoneTextBox.Location = new System.Drawing.Point(72, 92);
             this.PhoneTextBox.MinimumSize = new System.Drawing.Size(150, 20);
             this.PhoneTextBox.Name = "PhoneTextBox";
+            this.PhoneTextBox.ReadOnly = true;
             this.PhoneTextBox.Size = new System.Drawing.Size(339, 20);
             this.PhoneTextBox.TabIndex = 11;
+            this.PhoneTextBox.TextChanged += new System.EventHandler(this.PhoneTextBox_TextChanged);
             // 
             // BirthdayDateTimePicker
             // 
             this.BirthdayDateTimePicker.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.BirthdayDateTimePicker.Location = new System.Drawing.Point(72, 69);
+            this.BirthdayDateTimePicker.MaxDate = new System.DateTime(2021, 2, 27, 0, 0, 0, 0);
+            this.BirthdayDateTimePicker.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
             this.BirthdayDateTimePicker.MinimumSize = new System.Drawing.Size(150, 20);
             this.BirthdayDateTimePicker.Name = "BirthdayDateTimePicker";
             this.BirthdayDateTimePicker.Size = new System.Drawing.Size(150, 20);
             this.BirthdayDateTimePicker.TabIndex = 12;
+            this.BirthdayDateTimePicker.Value = new System.DateTime(2021, 2, 27, 0, 0, 0, 0);
             // 
             // splitContainer1
             // 
@@ -200,6 +213,7 @@
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.AutoScroll = true;
+            this.splitContainer1.Panel1.Controls.Add(this.AddContactButton);
             this.splitContainer1.Panel1.Controls.Add(this.ContactsListBox);
             this.splitContainer1.Panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer1_Panel1_Paint);
             this.splitContainer1.Panel1MinSize = 200;
@@ -223,6 +237,18 @@
             this.splitContainer1.Size = new System.Drawing.Size(800, 450);
             this.splitContainer1.SplitterDistance = 282;
             this.splitContainer1.TabIndex = 13;
+            // 
+            // AddContactButton
+            // 
+            this.AddContactButton.BackColor = System.Drawing.SystemColors.Control;
+            this.AddContactButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.AddContactButton.ForeColor = System.Drawing.Color.Transparent;
+            this.AddContactButton.Image = ((System.Drawing.Image)(resources.GetObject("AddContactButton.Image")));
+            this.AddContactButton.Location = new System.Drawing.Point(12, 412);
+            this.AddContactButton.Name = "AddContactButton";
+            this.AddContactButton.Size = new System.Drawing.Size(22, 23);
+            this.AddContactButton.TabIndex = 13;
+            this.AddContactButton.UseVisualStyleBackColor = false;
             // 
             // MainForm
             // 
@@ -258,6 +284,7 @@
         private System.Windows.Forms.TextBox PhoneTextBox;
         private System.Windows.Forms.DateTimePicker BirthdayDateTimePicker;
         private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.Button AddContactButton;
     }
 }
 

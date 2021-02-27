@@ -10,32 +10,71 @@ using Newtonsoft.Json;
 namespace ContactsApp
 {
     /// <summary>
-    /// Класс 
+    /// Описывает контакт 
     /// </summary>
-    public class Contact : PhoneNumber, ICloneable
+    public class Contact
     {
-        private string _surename;
-        private string _name;
-        private DateTime _dateOfBirth;
-        private string _email;
-        private string _idVk;
-
-
-
-      
+        /// <summary>
+        /// Фамилия
+        /// </summary>
+        private string _surname;
        
-        public string Surename
+        /// <summary>
+        /// Номер телефона
+        /// </summary>
+        private PhoneNumber _numberPhone;
+        
+        /// <summary>
+        /// Имя
+        /// </summary>
+        private string _name;
+       
+        /// <summary>
+        /// Дата рождения
+        /// </summary>
+        private DateTime _dateOfBirth;
+        
+        /// <summary>
+        /// Email
+        /// </summary>
+        private string _email;
+       
+        /// <summary>
+        /// id vk.com
+        /// </summary>
+        private string _idVk;
+       
+        /// <summary>
+        /// Свойство фамилии, выполняет проверку на валидность данных, ставит первый символ в верхний регистр
+        /// </summary>
+        public string Surname
         {
-            get { return _surename; }
+            get { return _surname; }
 
             set
             {
                 Validator.ContactValidator(value);
                 value = char.ToUpper(value[0]) + value.Substring(1);
-                _surename = value;
+                _surname = value;
             }
         }
 
+        public PhoneNumber NumberPhone
+        {
+            get
+            {
+                return _numberPhone;
+            }
+
+            set
+            {
+                _numberPhone = value;
+            }
+        }
+
+        /// <summary>
+        ///  Свойство имени, выполняет проверку на валидность данных, ставит первый символ в верхний регистр
+        /// </summary>
         public string Name
         {
             get { return _name; }
@@ -48,6 +87,9 @@ namespace ContactsApp
             }
         }
 
+        /// <summary>
+        /// Свойство даты рождения, выполняет проверку на валидность данных
+        /// </summary>
         public DateTime DateOfBirth
         {
             get
@@ -58,17 +100,20 @@ namespace ContactsApp
             set
             {
                 var date1 = new DateTime(1900, 01, 01);
-                if (value > DateTime.Today || value < date1)
+                if (value > DateTime.Now || value < date1)
                 {
                     throw new ArgumentException(
                         $"Дата рождения не должна быть раньше 01.01.1900 и позже " +
-                        $"сегодня: -{DateTime.Today}");
+                        $"сегодня: -{DateTime.Now}");
                 }
 
                 _dateOfBirth = value;
             }
         }
 
+        /// <summary>
+        /// Свойство e-mail, выполняет проверку на валидность данных
+        /// </summary>
         public string Email
         {
             get { return _email; }
@@ -80,6 +125,9 @@ namespace ContactsApp
             }
         }
 
+        /// <summary>
+        /// Свойство id vk.com, выполняет проверку на валидность данных
+        /// </summary>
         public string IdVk
         {
             get { return _idVk; }
@@ -103,72 +151,36 @@ namespace ContactsApp
         /// <summary>
         /// Этот вариант конструктора предназначен для контактов, с именем, фамилией, e-mail и idVK и номером телефона
         /// </summary>
-        /// <param name="surename"></param>
-        /// <param name="name"></param>
-        /// <param name="phoneNumber"></param>
-        /// <param name="dateOfBirth"></param>
-        /// <param name="email"></param>
-        /// <param name="idVk"></param>
+        /// <param name="surname">Фамилия</param>
+        /// <param name="name">Имя</param>
+        /// <param name="phoneNumber">Номер телефона</param>
+        /// <param name="dateOfBirth">Дата рождения</param>
+        /// <param name="email">E-mail</param>
+        /// <param name="idVk">idVK</param>
         
         [JsonConstructor]
-        public Contact(string surename, string name, string phoneNumber,
-            DateTime dateOfBirth, string email, string idVk):base(phoneNumber)
+        public Contact(string surname, string name, PhoneNumber phoneNumber,
+            DateTime dateOfBirth, string email, string idVk)
         {
-            Surename = surename;
+            
+            Surname = surname;
             Name = name;
+            NumberPhone = phoneNumber;
             DateOfBirth = dateOfBirth;
             Email = email;
             IdVk = idVk;
         }
 
-        /// <summary>
-        /// Этот вариант конструктора предназначен для контактов, с именем и фамилией и номером телефона
-        /// </summary>
-        /// <param name="surename"></param>
-        /// <param name="name"></param>
-        /// <param name="phoneNumber"></param>
-       
         /*
-        public Contact(string surename, string name, string phoneNumber)
-        {
-            Surename = surename;
-            Name = name;
-            NumberPhone = phoneNumber;
-        }
         /// <summary>
-        /// Этот вариант конструктора предназначен для контактов только с именем и номером телефона
+        /// Конструктор интерфейса ICloneable
         /// </summary>
-        /// <param name="name"></param>
-        /// <param name="phoneNumber"></param>
-        public Contact(string name, string phoneNumber)
-        {
-            Name = name;
-            NumberPhone = phoneNumber;
-        }
-        /// <summary>
-        ///  Этот вариант конструктора предназначен для контактов без страницы в Vk
-        /// </summary>
-        /// <param name="surename"></param>
-        /// <param name="name"></param>
-        /// <param name="phoneNumber"></param>
-        /// <param name="dateOfBirth"></param>
-        /// <param name="email"></param>
-        public Contact(string surename, string name, string phoneNumber,
-            DateTime dateOfBirth, string email)
-        {
-            Surename = surename;
-            Name = name;
-            NumberPhone = phoneNumber;
-            DateOfBirth = dateOfBirth;
-            Email = email;
-        }
-        */
-
+        /// <returns></returns>
         public object Clone()
         {
-            return new Contact(Surename,Name, NumberPhone, DateOfBirth,Email,IdVk)
+            return new Contact(Surname,Name, NumberPhone, DateOfBirth,Email,IdVk)
             {
-                Surename = this.Surename,
+                Surname = this.Surname,
                 Name = this.Name,
                 NumberPhone = this.NumberPhone,
                 DateOfBirth = this.DateOfBirth,
@@ -177,5 +189,6 @@ namespace ContactsApp
                     
             };
         }
+        */
     }
 }
