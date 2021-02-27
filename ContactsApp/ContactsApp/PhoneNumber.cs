@@ -8,22 +8,27 @@ using System.Threading.Tasks;
 namespace ContactsApp
 {
     /// <summary>
-    /// Класс 
+    /// Описывает сущность "номер телефона" 
     /// </summary>
     public class PhoneNumber
     {
+        /// <summary>
+        /// Номер телефона
+        /// </summary>
         private string _numberPhone;
-
+        
+        /// <summary>
+        /// Свойства номера телефона, содержит проверки на валидность данных
+        /// </summary>
+        
         public string NumberPhone
         {
             get { return _numberPhone; }
 
             set
             {
-
                 foreach (var var in value)
                 {
-
                     if (!char.IsDigit(var))
                     {
                         throw new ArgumentException("Строка должна содержать только цифры");
@@ -43,6 +48,10 @@ namespace ContactsApp
             }
         }
 
+        /// <summary>
+        /// Конструктор объекта номера телефона
+        /// </summary>
+        /// <param name="numberPhone">Номер телефона</param>
         public PhoneNumber(string numberPhone)
         {
             NumberPhone = numberPhone;

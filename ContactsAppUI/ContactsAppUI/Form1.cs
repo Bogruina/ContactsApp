@@ -18,18 +18,25 @@ namespace ContactsAppUI
             InitializeComponent();
             this.Text = "ContactsApp";
             this.Size = new Size(800, 500);
+            AddContactButton.FlatAppearance.BorderSize = 0;
+            AddContactButton.FlatStyle = FlatStyle.Flat;
+            this.BirthdayDateTimePicker.Enabled = false;
             
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            Contact contact = new Contact("Kiev", "222222", "70002000000",
-                new DateTime(2000, 12, 12), "fakemail", "id12121212");
-            Project list = new Project();
-            list.AddElement(contact);
-            Manager.SaveToFile(list.ListOfContacts);
-            contact = Manager.LoadFromFile();
-            SurnameTextBox.Text = contact.Surename;
+
+            Encoding encCyr = Encoding.GetEncoding("Windows-1251");
+            Project outputContacts = new Project();
+            outputContacts = ProjectManager.LoadFromFile(ProjectManager.DefaultFilename); 
+            ContactsListBox.Items.Insert(0,outputContacts.Contacts[0].Surname);
+            SurnameTextBox.Text = outputContacts.Contacts[0].Surname;
+            NameTextBox.Text = outputContacts.Contacts[0].Name;
+            PhoneTextBox.Text = outputContacts.Contacts[0].NumberPhone.NumberPhone;
+            BirthdayDateTimePicker.Value = outputContacts.Contacts[0].DateOfBirth;
+            EmailTextBox.Text = outputContacts.Contacts[0].Email;
+            IdVkTextBox.Text = outputContacts.Contacts[0].IdVk;
         }
 
 
@@ -53,6 +60,21 @@ namespace ContactsAppUI
         }
 
         private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void PhoneTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void EmailTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void IdVkTextBox_TextChanged(object sender, EventArgs e)
         {
 
         }

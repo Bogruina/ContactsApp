@@ -11,25 +11,24 @@ namespace ContactsApp
     /// </summary>
     public class Project
     {
-        private List<Contact> _list = new List<Contact>();
+        /// <summary>
+        /// Поле представляет собой список контактов
+        /// </summary>
+        private List<Contact> _contacts = new List<Contact>();
 
-        public List<Contact> ListOfContacts
+        /// <summary>
+        /// Свойство листа контактов
+        /// </summary>
+        public List<Contact> Contacts
         {
-            get { return _list; }
-
+            get
+            {
+                return _contacts;
+            }
             set
             {
-                _list = value;
+                _contacts = value;
             }
-            
-        }
-        /// <summary>
-        /// Метод добавляет контакт в список
-        /// </summary>
-        /// <param name="data">объект класса Contact</param>
-        public void AddElement(Contact data)
-        {
-            ListOfContacts.Add(data);
         }
 
     }
