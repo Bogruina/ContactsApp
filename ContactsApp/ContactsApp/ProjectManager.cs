@@ -13,6 +13,10 @@ namespace ContactsApp
     /// </summary>
     public static class ProjectManager
     {
+        /// <summary>
+        /// Свойство позволяет получить путь к файлу
+        /// /***/AppData/Roaming/ContactsApp/contacts.json
+        /// </summary>
         public static string DefaultFilename
         {
             get
@@ -33,7 +37,8 @@ namespace ContactsApp
         public static void SaveToFile(Project project, string filename)
         {
             JsonSerializer serializer = new JsonSerializer();
-            using (StreamWriter sw = new StreamWriter(filename))
+            using (StreamWriter sw = new StreamWriter(filename, false,
+                Encoding.GetEncoding("Windows-1251")))
             {
                 using (JsonWriter writer = new JsonTextWriter(sw))
                 {
@@ -53,6 +58,7 @@ namespace ContactsApp
             {
                 throw new NullReferenceException("Файл не существует.");
             }
+
             JsonSerializer serializer = new JsonSerializer();
             using (StreamReader sr = new StreamReader(filename, Encoding.GetEncoding("Windows-1251")))
             using (JsonReader reader = new JsonTextReader(sr))
@@ -63,6 +69,7 @@ namespace ContactsApp
                     Project emptyProject = null;
                     //return emptyProject;
                 }
+                
                 return project;
             }
         }
