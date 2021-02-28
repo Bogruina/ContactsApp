@@ -59,6 +59,9 @@ namespace ContactsApp
             }
         }
 
+        /// <summary>
+        /// Свойство номера телефона
+        /// </summary>
         public PhoneNumber NumberPhone
         {
             get
@@ -153,7 +156,7 @@ namespace ContactsApp
         /// </summary>
         /// <param name="surname">Фамилия</param>
         /// <param name="name">Имя</param>
-        /// <param name="phoneNumber">Номер телефона</param>
+        /// <param name="phoneNumber">Объект класса PhoneNumber</param>
         /// <param name="dateOfBirth">Дата рождения</param>
         /// <param name="email">E-mail</param>
         /// <param name="idVk">idVK</param>
@@ -162,7 +165,6 @@ namespace ContactsApp
         public Contact(string surname, string name, PhoneNumber phoneNumber,
             DateTime dateOfBirth, string email, string idVk)
         {
-            
             Surname = surname;
             Name = name;
             NumberPhone = phoneNumber;
@@ -171,14 +173,14 @@ namespace ContactsApp
             IdVk = idVk;
         }
 
-        /*
+
         /// <summary>
         /// Конструктор интерфейса ICloneable
         /// </summary>
         /// <returns></returns>
         public object Clone()
         {
-            return new Contact(Surname,Name, NumberPhone, DateOfBirth,Email,IdVk)
+            return new Contact(Surname, Name, NumberPhone, DateOfBirth, Email, IdVk)
             {
                 Surname = this.Surname,
                 Name = this.Name,
@@ -186,9 +188,7 @@ namespace ContactsApp
                 DateOfBirth = this.DateOfBirth,
                 Email = this.Email,
                 IdVk = this.IdVk
-                    
             };
         }
-        */
     }
 }

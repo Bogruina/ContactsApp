@@ -55,13 +55,16 @@
             this.ContactsListBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.ContactsListBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.ContactsListBox.FormattingEnabled = true;
+            this.ContactsListBox.ItemHeight = 16;
             this.ContactsListBox.Location = new System.Drawing.Point(3, 12);
             this.ContactsListBox.MaximumSize = new System.Drawing.Size(800, 600);
             this.ContactsListBox.MinimumSize = new System.Drawing.Size(200, 4);
             this.ContactsListBox.Name = "ContactsListBox";
-            this.ContactsListBox.Size = new System.Drawing.Size(275, 394);
+            this.ContactsListBox.Size = new System.Drawing.Size(275, 388);
             this.ContactsListBox.TabIndex = 0;
+            this.ContactsListBox.SelectedIndexChanged += new System.EventHandler(this.ContactsListBox_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -73,7 +76,7 @@
             this.label1.Size = new System.Drawing.Size(52, 13);
             this.label1.TabIndex = 1;
             this.label1.Text = "Surname:";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            
             // 
             // label2
             // 
@@ -215,7 +218,6 @@
             this.splitContainer1.Panel1.AutoScroll = true;
             this.splitContainer1.Panel1.Controls.Add(this.AddContactButton);
             this.splitContainer1.Panel1.Controls.Add(this.ContactsListBox);
-            this.splitContainer1.Panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer1_Panel1_Paint);
             this.splitContainer1.Panel1MinSize = 200;
             // 
             // splitContainer1.Panel2
@@ -232,7 +234,6 @@
             this.splitContainer1.Panel2.Controls.Add(this.NameTextBox);
             this.splitContainer1.Panel2.Controls.Add(this.label6);
             this.splitContainer1.Panel2.Controls.Add(this.SurnameTextBox);
-            this.splitContainer1.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer1_Panel2_Paint);
             this.splitContainer1.Panel2MinSize = 250;
             this.splitContainer1.Size = new System.Drawing.Size(800, 450);
             this.splitContainer1.SplitterDistance = 282;
@@ -240,15 +241,19 @@
             // 
             // AddContactButton
             // 
+            this.AddContactButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.AddContactButton.AutoSize = true;
+            this.AddContactButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.AddContactButton.BackColor = System.Drawing.SystemColors.Control;
             this.AddContactButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.AddContactButton.ForeColor = System.Drawing.Color.Transparent;
             this.AddContactButton.Image = ((System.Drawing.Image)(resources.GetObject("AddContactButton.Image")));
             this.AddContactButton.Location = new System.Drawing.Point(12, 412);
             this.AddContactButton.Name = "AddContactButton";
-            this.AddContactButton.Size = new System.Drawing.Size(22, 23);
+            this.AddContactButton.Size = new System.Drawing.Size(22, 22);
             this.AddContactButton.TabIndex = 13;
             this.AddContactButton.UseVisualStyleBackColor = false;
+            this.AddContactButton.Click += new System.EventHandler(this.AddContactButton_Click);
             // 
             // MainForm
             // 
@@ -260,6 +265,7 @@
             this.Text = "ContactsApp";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
             this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();

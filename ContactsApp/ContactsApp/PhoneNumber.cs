@@ -20,7 +20,6 @@ namespace ContactsApp
         /// <summary>
         /// Свойства номера телефона, содержит проверки на валидность данных
         /// </summary>
-        
         public string NumberPhone
         {
             get { return _numberPhone; }

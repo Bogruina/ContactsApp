@@ -13,6 +13,16 @@ namespace ContactsAppUI
 {
     public partial class MainForm : Form
     {
+        Project contacts = new Project();
+        
+        public void FillContactsListBox()
+        {
+            for (int i = 0; i < contacts.Contacts.Count; i++)
+            {
+                ContactsListBox.Items.Insert(i, contacts.Contacts[i].Surname);
+            }
+        }
+       
         public MainForm()
         {
             InitializeComponent();
@@ -26,40 +36,18 @@ namespace ContactsAppUI
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
-            Encoding encCyr = Encoding.GetEncoding("Windows-1251");
-            Project outputContacts = new Project();
-            outputContacts = ProjectManager.LoadFromFile(ProjectManager.DefaultFilename); 
-            ContactsListBox.Items.Insert(0,outputContacts.Contacts[0].Surname);
-            SurnameTextBox.Text = outputContacts.Contacts[0].Surname;
-            NameTextBox.Text = outputContacts.Contacts[0].Name;
-            PhoneTextBox.Text = outputContacts.Contacts[0].NumberPhone.NumberPhone;
-            BirthdayDateTimePicker.Value = outputContacts.Contacts[0].DateOfBirth;
-            EmailTextBox.Text = outputContacts.Contacts[0].Email;
-            IdVkTextBox.Text = outputContacts.Contacts[0].IdVk;
+            contacts = ProjectManager.LoadFromFile(ProjectManager.DefaultFilename); 
+            FillContactsListBox();
         }
 
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
+       
 
         private void NameTextBox_TextChanged(object sender, EventArgs e)
         {
 
         }
         private void SurnameTextBox_TextChanged_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void splitContainer1_Panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)
         {
 
         }
@@ -75,6 +63,22 @@ namespace ContactsAppUI
         }
 
         private void IdVkTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ContactsListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int index = ContactsListBox.SelectedIndex;
+            SurnameTextBox.Text = contacts.Contacts[index].Surname;
+            NameTextBox.Text = contacts.Contacts[index].Name;
+            PhoneTextBox.Text = contacts.Contacts[index].NumberPhone.NumberPhone;
+            BirthdayDateTimePicker.Value = contacts.Contacts[index].DateOfBirth;
+            EmailTextBox.Text = contacts.Contacts[index].Email;
+            IdVkTextBox.Text = contacts.Contacts[index].IdVk;
+        }
+
+        private void AddContactButton_Click(object sender, EventArgs e)
         {
 
         }
