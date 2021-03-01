@@ -31,7 +31,11 @@ namespace ContactsAppUI
             AddContactButton.FlatAppearance.BorderSize = 0;
             AddContactButton.FlatStyle = FlatStyle.Flat;
             this.BirthdayDateTimePicker.Enabled = false;
-            
+            EditContactButton.FlatAppearance.BorderSize = 0;
+            EditContactButton.FlatStyle = FlatStyle.Flat;
+            DeleteContactButton.FlatAppearance.BorderSize = 0;
+            DeleteContactButton.FlatStyle = FlatStyle.Flat;
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -79,6 +83,11 @@ namespace ContactsAppUI
         }
 
         private void AddContactButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void DeleteContactButton_Click(object sender, EventArgs e)
         {
 
         }

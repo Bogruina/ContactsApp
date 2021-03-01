@@ -36,6 +36,11 @@ namespace ContactsApp
         /// производиться сериализация</param>
         public static void SaveToFile(Project project, string filename)
         {
+            if (!File.Exists((filename)))
+            {
+                File.Create(filename);
+            }
+
             JsonSerializer serializer = new JsonSerializer();
             using (StreamWriter sw = new StreamWriter(filename, false,
                 Encoding.GetEncoding("Windows-1251")))
@@ -64,12 +69,6 @@ namespace ContactsApp
             using (JsonReader reader = new JsonTextReader(sr))
             {
                 var project = serializer.Deserialize<Project>(reader);
-                if (project == null)
-                {
-                    Project emptyProject = null;
-                    //return emptyProject;
-                }
-                
                 return project;
             }
         }
