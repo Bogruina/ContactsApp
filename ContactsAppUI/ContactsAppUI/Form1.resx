@@ -126,4 +126,22 @@
         AABJRU5ErkJggg==
 </value>
   </data>
+  <data name="EditContactButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAADDSURBVDhP1ZDBDcIgFIaZyCGYwMSrUzgEZwdgBVdwBS/M
+        YA+aUGPh+uzf9q+QaoWjL/kCpbyPP0+hRETFGD3AvqrYvD+eBVCyRlZsVjtLwS8umaQ/SF8f1s3hJM45
+        0VovsNbmEmwgYTOSAEiuNy+tf8xQYoyB5D0vStBEwSdJmoSS0dAXJWkKSkIICwFA6ql9rP5gi8NUwtlQ
+        kqZZCKYUwwDxMpu5Fgvws3t20tzbOU21AJcgwTepFqzxB4ISvgrKifICzomJE4ikXAkAAAAASUVORK5C
+        YII=
+</value>
+  </data>
+  <data name="DeleteContactButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAB5SURBVDhPzYzBDYAwDAOzAR8mYHHW4cEaZQHUN8goKWnl
+        IBAPOCmCWmfL/8g5jzh9FqK8AsI6TxvOy1FeYdIydMeZHOVaO/Fi6qXILKMDgI3cLhvtyKMyeDXQlvH1
+        /5cjrIw3y+iIH/BilGutxuRWinIKBCZF+deI7DntQJCwkbcMAAAAAElFTkSuQmCC
+</value>
+  </data>
 </root>
