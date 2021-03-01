@@ -10,6 +10,7 @@ namespace ContactsApp
     /// </summary>
     public static class ProjectManager
     {
+        private const string CurrentEncoding = "Windows-1251";
         /// <summary>
         /// Свойство позволяет получить путь к файлу
         /// /***/AppData/Roaming/ContactsApp/contacts.json
@@ -40,7 +41,7 @@ namespace ContactsApp
 
             JsonSerializer serializer = new JsonSerializer();
             using (StreamWriter sw = new StreamWriter(filename, false,
-                Encoding.GetEncoding("Windows-1251")))
+                Encoding.GetEncoding(CurrentEncoding)))
             {
                 using (JsonWriter writer = new JsonTextWriter(sw))
                 {
@@ -62,7 +63,8 @@ namespace ContactsApp
             }
 
             JsonSerializer serializer = new JsonSerializer();
-            using (StreamReader sr = new StreamReader(filename, Encoding.GetEncoding("Windows-1251")))
+            using (StreamReader sr = new StreamReader(filename, 
+                Encoding.GetEncoding(CurrentEncoding)))
             using (JsonReader reader = new JsonTextReader(sr))
             {
                 var project = serializer.Deserialize<Project>(reader);

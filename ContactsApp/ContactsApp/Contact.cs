@@ -43,12 +43,15 @@ namespace ContactsApp
         /// </summary>
         public string Surname
         {
-            get { return _surname; }
+            get
+            {
+                return _surname;
+            }
 
             set
             {
-                Validator.AssertContact(value,50);
-                Validator.RegisterManage(value);
+                Validator.AssertString(value, 50, "Surname");
+                Validator.ToFirstUpper(value);
                 _surname = value;
             }
         }
@@ -56,30 +59,23 @@ namespace ContactsApp
         /// <summary>
         /// Свойство номера телефона
         /// </summary>
-        public PhoneNumber PhoneNumber
-        {
-            get
-            {
-                return _phoneNumber;
-            }
+        public PhoneNumber PhoneNumber { get; set; }
 
-            set
-            {
-                _phoneNumber = value;
-            }
-        }
 
         /// <summary>
         ///  Свойство имени, выполняет проверку на валидность данных, ставит первый символ в верхний регистр
         /// </summary>
         public string Name
         {
-            get { return _name; }
+            get
+            {
+                return _name;
+            }
             
             set
             {
-                Validator.AssertContact(value,50);
-                Validator.RegisterManage(value);
+                Validator.AssertString(value, 50, "Name");
+                Validator.ToFirstUpper(value);
                 _name = value;
             }
         }
@@ -113,11 +109,14 @@ namespace ContactsApp
         /// </summary>
         public string Email
         {
-            get { return _email; }
+            get
+            {
+                return _email;
+            }
 
             set
             {
-                Validator.AssertContact(value,50);
+                Validator.AssertString(value, 50, "Email");
                 _email = value;
             }
         }
@@ -127,11 +126,14 @@ namespace ContactsApp
         /// </summary>
         public string IdVk
         {
-            get { return _idVk; }
+            get
+            {
+                return _idVk;
+            }
 
             set
             {
-                Validator.AssertContact(value,15);
+                Validator.AssertString(value, 15, "IdVK");
                 _idVk = value;
             }
         }
@@ -165,15 +167,7 @@ namespace ContactsApp
         /// <returns></returns>
         public object Clone()
         {
-            return new Contact(Surname, Name, PhoneNumber, DateOfBirth, Email, IdVk)
-            {
-                Surname = this.Surname,
-                Name = this.Name,
-                PhoneNumber = this.PhoneNumber,
-                DateOfBirth = this.DateOfBirth,
-                Email = this.Email,
-                IdVk = this.IdVk
-            };
+            return new Contact(Surname, Name, PhoneNumber, DateOfBirth, Email, IdVk);
         }
     }
 }

@@ -11,18 +11,19 @@ namespace ContactsApp
         /// Статический метод проверяет подходит ли строка с именем, фамилией и e-mail по требованиям.
         /// </summary>
         /// <param name="value">Строка, которую надо проверить</param>
-        /// <param name="lenght">Максимальная длина строки</param>
-        public static void AssertContact(string value, int lenght)
+        /// <param name="length">Максимальная длина строки</param>
+        /// <param name="currentProperty">Что в данный момент проверяется</param>
+        public static void AssertString(string value, int length, string currentProperty)
         {
             if (string.IsNullOrEmpty(value))
             {
                 throw new ArgumentException("Вы ввели пустую строку.");
             }
 
-            if (value.Length > lenght)
+            if (value.Length > length)
             {
-                throw new ArgumentException($"Длина имени, фамилии и e-mail " +
-                                            $"должно быть меньше {lenght} символов.");
+                throw new ArgumentException($"Длина {currentProperty} " +
+                                            $"должно быть меньше {length} символов.");
             }
         }
         /// <summary>
@@ -30,7 +31,7 @@ namespace ContactsApp
         /// </summary>
         /// <param name="data">Имя или Фамилия контакта</param>
         /// <returns></returns>
-        public static string RegisterManage(string data)
+        public static string ToFirstUpper(string data)
         {
             data.ToLower();
             data = char.ToUpper(data[0]) + data.Substring(1);
