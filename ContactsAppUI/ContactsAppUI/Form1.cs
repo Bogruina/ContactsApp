@@ -76,7 +76,7 @@ namespace ContactsAppUI
             int index = ContactsListBox.SelectedIndex;
             SurnameTextBox.Text = contacts.Contacts[index].Surname;
             NameTextBox.Text = contacts.Contacts[index].Name;
-            PhoneTextBox.Text = contacts.Contacts[index].NumberPhone.NumberPhone;
+            PhoneTextBox.Text = contacts.Contacts[index].PhoneNumber.NumberPhone;
             BirthdayDateTimePicker.Value = contacts.Contacts[index].DateOfBirth;
             EmailTextBox.Text = contacts.Contacts[index].Email;
             IdVkTextBox.Text = contacts.Contacts[index].IdVk;
