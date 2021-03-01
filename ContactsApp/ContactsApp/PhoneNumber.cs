@@ -3,7 +3,7 @@
 namespace ContactsApp
 {
     /// <summary>
-    /// Описывает сущность "номер телефона" 
+    /// Описывает номер телефона 
     /// </summary>
     public class PhoneNumber
     {
@@ -15,9 +15,12 @@ namespace ContactsApp
         /// <summary>
         /// Свойства номера телефона, содержит проверки на валидность данных
         /// </summary>
-        public string NumberPhone
+        public string Number
         {
-            get { return _numberPhone; }
+            get
+            {
+                return _numberPhone;
+            }
 
             set
             {
@@ -48,7 +51,7 @@ namespace ContactsApp
         /// <param name="numberPhone">Номер телефона</param>
         public PhoneNumber(string numberPhone)
         {
-            NumberPhone = numberPhone;
+            Number = numberPhone;
         }
     }
 }
