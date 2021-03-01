@@ -22,7 +22,7 @@ namespace ContactsApp
         /// <summary>
         /// Номер телефона
         /// </summary>
-        private PhoneNumber _numberPhone;
+        private PhoneNumber _phoneNumber;
         
         /// <summary>
         /// Имя
@@ -53,8 +53,8 @@ namespace ContactsApp
 
             set
             {
-                Validator.ContactValidator(value);
-                value = char.ToUpper(value[0]) + value.Substring(1);
+                Validator.AssertContact(value,50);
+                Validator.RegisterManage(value);
                 _surname = value;
             }
         }
@@ -62,16 +62,16 @@ namespace ContactsApp
         /// <summary>
         /// Свойство номера телефона
         /// </summary>
-        public PhoneNumber NumberPhone
+        public PhoneNumber PhoneNumber
         {
             get
             {
-                return _numberPhone;
+                return _phoneNumber;
             }
 
             set
             {
-                _numberPhone = value;
+                _phoneNumber = value;
             }
         }
 
@@ -84,8 +84,8 @@ namespace ContactsApp
             
             set
             {
-                Validator.ContactValidator(value);
-                value = char.ToUpper(value[0]) + value.Substring(1);
+                Validator.AssertContact(value,50);
+                Validator.RegisterManage(value);
                 _name = value;
             }
         }
@@ -123,7 +123,7 @@ namespace ContactsApp
 
             set
             {
-                Validator.ContactValidator(value);
+                Validator.AssertContact(value,50);
                 _email = value;
             }
         }
@@ -137,16 +137,7 @@ namespace ContactsApp
 
             set
             {
-                if (string.IsNullOrEmpty(value))
-                {
-                    throw new ArgumentException("Вы ввели пустую строку.");
-                }
-
-                if (value.Length > 15)
-                {
-                    throw new ArgumentException("Длина id  должна быть меньше 15 символов.");
-                }
-
+                Validator.AssertContact(value,15);
                 _idVk = value;
             }
         }
@@ -167,7 +158,7 @@ namespace ContactsApp
         {
             Surname = surname;
             Name = name;
-            NumberPhone = phoneNumber;
+            PhoneNumber = phoneNumber;
             DateOfBirth = dateOfBirth;
             Email = email;
             IdVk = idVk;
@@ -180,11 +171,11 @@ namespace ContactsApp
         /// <returns></returns>
         public object Clone()
         {
-            return new Contact(Surname, Name, NumberPhone, DateOfBirth, Email, IdVk)
+            return new Contact(Surname, Name, PhoneNumber, DateOfBirth, Email, IdVk)
             {
                 Surname = this.Surname,
                 Name = this.Name,
-                NumberPhone = this.NumberPhone,
+                PhoneNumber = this.PhoneNumber,
                 DateOfBirth = this.DateOfBirth,
                 Email = this.Email,
                 IdVk = this.IdVk
