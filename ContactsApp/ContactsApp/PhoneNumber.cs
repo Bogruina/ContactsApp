@@ -45,13 +45,6 @@ namespace ContactsApp
             }
         }
 
-        /// <summary>
-        /// Конструктор объекта номера телефона
-        /// </summary>
-        /// <param name="numberPhone">Номер телефона</param>
-        public PhoneNumber(string numberPhone)
-        {
-            Number = numberPhone;
-        }
+      
     }
 }

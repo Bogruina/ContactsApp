@@ -12,12 +12,7 @@ namespace ContactsApp
         /// Фамилия
         /// </summary>
         private string _surname;
-       
-        /// <summary>
-        /// Номер телефона
-        /// </summary>
-        private PhoneNumber _phoneNumber;
-        
+
         /// <summary>
         /// Имя
         /// </summary>
@@ -26,7 +21,7 @@ namespace ContactsApp
         /// <summary>
         /// Дата рождения
         /// </summary>
-        private DateTime _dateOfBirth;
+        private DateTime _birthday;
         
         /// <summary>
         /// Email
@@ -37,16 +32,13 @@ namespace ContactsApp
         /// id vk.com
         /// </summary>
         private string _idVk;
-       
+
         /// <summary>
         /// Свойство фамилии, выполняет проверку на валидность данных, ставит первый символ в верхний регистр
         /// </summary>
         public string Surname
         {
-            get
-            {
-                return _surname;
-            }
+            get { return _surname; }
 
             set
             {
@@ -59,9 +51,9 @@ namespace ContactsApp
         /// <summary>
         /// Свойство номера телефона
         /// </summary>
-        public PhoneNumber PhoneNumber { get; set; }
+        public PhoneNumber PhoneNumber { get; set; } = new PhoneNumber();
 
-
+        
         /// <summary>
         ///  Свойство имени, выполняет проверку на валидность данных, ставит первый символ в верхний регистр
         /// </summary>
@@ -83,11 +75,11 @@ namespace ContactsApp
         /// <summary>
         /// Свойство даты рождения, выполняет проверку на валидность данных
         /// </summary>
-        public DateTime DateOfBirth
+        public DateTime Birthday
         {
             get
             {
-                return _dateOfBirth;
+                return _birthday;
             }
 
             set
@@ -100,7 +92,7 @@ namespace ContactsApp
                         $"сегодня: -{DateTime.Now}");
                 }
 
-                _dateOfBirth = value;
+                _birthday = value;
             }
         }
 
@@ -144,20 +136,33 @@ namespace ContactsApp
         /// <param name="surname">Фамилия</param>
         /// <param name="name">Имя</param>
         /// <param name="phoneNumber">Объект класса PhoneNumber</param>
-        /// <param name="dateOfBirth">Дата рождения</param>
+        /// <param name="birthday">Дата рождения</param>
         /// <param name="email">E-mail</param>
         /// <param name="idVk">idVK</param>
         
         [JsonConstructor]
         public Contact(string surname, string name, PhoneNumber phoneNumber,
-            DateTime dateOfBirth, string email, string idVk)
+            DateTime birthday, string email, string idVk)
         {
             Surname = surname;
             Name = name;
             PhoneNumber = phoneNumber;
-            DateOfBirth = dateOfBirth;
+            Birthday = birthday;
             Email = email;
             IdVk = idVk;
+        }
+
+        /// <summary>
+        /// Конструктор без параметров
+        /// </summary>
+        public Contact()
+        {
+            Surname = "surname";
+            Name = "name";
+            PhoneNumber = new PhoneNumber();
+            Birthday = new DateTime(2000, 01, 01);
+            Email = "Email";
+            IdVk = "Idvk";
         }
 
 
@@ -167,7 +172,7 @@ namespace ContactsApp
         /// <returns></returns>
         public object Clone()
         {
-            return new Contact(Surname, Name, PhoneNumber, DateOfBirth, Email, IdVk);
+            return new Contact(Surname, Name, PhoneNumber, Birthday, Email, IdVk);
         }
     }
 }
