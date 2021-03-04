@@ -10,7 +10,11 @@ namespace ContactsApp
     /// </summary>
     public static class ProjectManager
     {
+        /// <summary>
+        /// Поле хранит текущую кодировку для сериализации и десериализации
+        /// </summary>
         private const string CurrentEncoding = "Windows-1251";
+       
         /// <summary>
         /// Свойство позволяет получить путь к файлу
         /// /***/AppData/Roaming/ContactsApp/contacts.json
@@ -59,7 +63,7 @@ namespace ContactsApp
         {
             if (!File.Exists(filename))
             {
-                throw new NullReferenceException("Файл не существует.");
+                throw new ArgumentException("Файл не существует.");
             }
 
             JsonSerializer serializer = new JsonSerializer();
