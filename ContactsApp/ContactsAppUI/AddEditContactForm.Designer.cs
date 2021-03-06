@@ -68,6 +68,7 @@ namespace ContactsAppUI
             this.BirthdayDateTimePicker.Size = new System.Drawing.Size(150, 20);
             this.BirthdayDateTimePicker.TabIndex = 24;
             this.BirthdayDateTimePicker.Value = new System.DateTime(2021, 2, 27, 0, 0, 0, 0);
+            this.BirthdayDateTimePicker.ValueChanged += new System.EventHandler(this.BirthdayDateTimePicker_ValueChanged);
             // 
             // label2
             // 
@@ -89,6 +90,7 @@ namespace ContactsAppUI
             this.PhoneTextBox.Name = "PhoneTextBox";
             this.PhoneTextBox.Size = new System.Drawing.Size(311, 20);
             this.PhoneTextBox.TabIndex = 23;
+            this.PhoneTextBox.TextChanged += new System.EventHandler(this.PhoneTextBox_TextChanged);
             // 
             // label3
             // 
@@ -110,6 +112,7 @@ namespace ContactsAppUI
             this.EmailTextBox.Name = "EmailTextBox";
             this.EmailTextBox.Size = new System.Drawing.Size(311, 20);
             this.EmailTextBox.TabIndex = 22;
+            this.EmailTextBox.TextChanged += new System.EventHandler(this.EmailTextBox_TextChanged);
             // 
             // label4
             // 
@@ -131,6 +134,7 @@ namespace ContactsAppUI
             this.IdVkTextBox.Name = "IdVkTextBox";
             this.IdVkTextBox.Size = new System.Drawing.Size(311, 20);
             this.IdVkTextBox.TabIndex = 21;
+            this.IdVkTextBox.TextChanged += new System.EventHandler(this.IdVkTextBox_TextChanged);
             // 
             // label5
             // 
@@ -152,6 +156,7 @@ namespace ContactsAppUI
             this.NameTextBox.Name = "NameTextBox";
             this.NameTextBox.Size = new System.Drawing.Size(311, 20);
             this.NameTextBox.TabIndex = 20;
+            this.NameTextBox.TextChanged += new System.EventHandler(this.NameTextBox_TextChanged);
             // 
             // label6
             // 
@@ -173,6 +178,8 @@ namespace ContactsAppUI
             this.SurnameTextBox.Name = "SurnameTextBox";
             this.SurnameTextBox.Size = new System.Drawing.Size(311, 20);
             this.SurnameTextBox.TabIndex = 19;
+            this.SurnameTextBox.TextChanged += new System.EventHandler(this.SurnameTextBox_TextChanged);
+            this.SurnameTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.SurnameTextBox_Validating);
             // 
             // CancelButton
             // 
@@ -217,6 +224,7 @@ namespace ContactsAppUI
             this.MinimumSize = new System.Drawing.Size(408, 235);
             this.Name = "AddEditContactForm";
             this.Text = "Add/Edit Contact";
+            this.Load += new System.EventHandler(this.AddEditContactForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

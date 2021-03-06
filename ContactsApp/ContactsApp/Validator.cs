@@ -17,13 +17,13 @@ namespace ContactsApp
         {
             if (string.IsNullOrEmpty(value))
             {
-                throw new ArgumentException("Вы ввели пустую строку.");
+                throw new ArgumentException($"You entered an empty line in the field {currentProperty}");
             }
 
             if (value.Length > length)
             {
-                throw new ArgumentException($"Длина {currentProperty} " +
-                                            $"должно быть меньше {length} символов.");
+                throw new ArgumentException($"Length {currentProperty} " +
+                                            $"should be less {length} letters.");
             }
         }
 

@@ -17,24 +17,13 @@ namespace ContactsAppUI
         
         public void FillContactsListBox()
         {
-            if (ContactsListBox.Items.Count != 0)
-            {
-                RefreshContactsListBox();
-            }
+            ContactsListBox.Items.Clear();
             for (int i = 0; i < contacts.Contacts.Count; i++)
             {
                 ContactsListBox.Items.Insert(i, contacts.Contacts[i].Surname);
             }
         }
 
-        public void RefreshContactsListBox()
-        {
-            for (int i = 0; i < contacts.Contacts.Count; i++)
-            {
-                ContactsListBox.Items.RemoveAt(i);
-            }
-        }
-       
         public MainForm()
         {
             InitializeComponent();
@@ -59,35 +48,6 @@ namespace ContactsAppUI
         private void Form1_Load(object sender, EventArgs e)
         {
             contacts = ProjectManager.LoadFromFile(ProjectManager.DefaultFilename);
-            FillContactsListBox();
-
-        }
-
-
-       
-
-        private void NameTextBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-        private void SurnameTextBox_TextChanged_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void PhoneTextBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void EmailTextBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void IdVkTextBox_TextChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void ContactsListBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -104,14 +64,20 @@ namespace ContactsAppUI
         private void AddContactButton_Click(object sender, EventArgs e)
         {
             var addContact = new AddEditContactForm();
-            addContact.Show();
-            var newContact = addContact.Contact;
-            contacts.Contacts.Add(newContact);
+            addContact.ShowDialog();
+            if (addContact.DialogResult == DialogResult.OK)
+            { 
+                var newContact = addContact.Contact;
+                contacts.Contacts.Add(newContact);
+            }
+            FillContactsListBox();
         }
 
         private void DeleteContactButton_Click(object sender, EventArgs e)
         {
-
+            var selectedIndex = ContactsListBox.SelectedIndex;
+            contacts.Contacts.RemoveAt(selectedIndex);
+            FillContactsListBox();
         }
 
         private void splitContainer1_Panel1_Paint(object sender, PaintEventArgs e)
@@ -125,11 +91,30 @@ namespace ContactsAppUI
             var selectedData = contacts.Contacts[selectedIndex];
             var editContact = new AddEditContactForm();
             editContact.Contact = selectedData;
-            editContact.Show();
+            editContact.ShowDialog();
             var updatedContact = editContact.Contact;
             contacts.Contacts.RemoveAt(selectedIndex);
             contacts.Contacts.Insert(selectedIndex, updatedContact);
 
+        }
+
+        private void MainForm_Activated(object sender, EventArgs e)
+        {
+            FillContactsListBox();
+        }
+
+        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            ProjectManager.SaveToFile(contacts,ProjectManager.DefaultFilename);
+        }
+
+        private void FindTextBox_TextChanged(object sender, EventArgs e)
+        {
+            int findIndex = ContactsListBox.FindString(FindTextBox.Text);
+            if (findIndex >= 0)
+            {
+                ContactsListBox.SetSelected(findIndex, true);
+            }
         }
     }
 }

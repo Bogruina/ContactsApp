@@ -88,8 +88,8 @@ namespace ContactsApp
                 if (value > DateTime.Now || value < date1)
                 {
                     throw new ArgumentException(
-                        $"Дата рождения не должна быть раньше 01.01.1900 и позже " +
-                        $"сегодня: -{DateTime.Now}");
+                        $"Birthday must not be earlier than 01/01/1900 " +
+                        $"and later today: -{DateTime.Now}");
                 }
 
                 _birthday = value;
@@ -157,12 +157,6 @@ namespace ContactsApp
         /// </summary>
         public Contact()
         {
-            Surname = "surname";
-            Name = "name";
-            PhoneNumber = new PhoneNumber();
-            Birthday = new DateTime(2000, 01, 01);
-            Email = "Email";
-            IdVk = "Idvk";
         }
 
 
