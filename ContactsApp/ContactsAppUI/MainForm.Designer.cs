@@ -153,7 +153,6 @@
             this.SurnameTextBox.ReadOnly = true;
             this.SurnameTextBox.Size = new System.Drawing.Size(331, 20);
             this.SurnameTextBox.TabIndex = 7;
-            this.SurnameTextBox.TextChanged += new System.EventHandler(this.SurnameTextBox_TextChanged_1);
             // 
             // NameTextBox
             // 
@@ -165,7 +164,6 @@
             this.NameTextBox.ReadOnly = true;
             this.NameTextBox.Size = new System.Drawing.Size(331, 20);
             this.NameTextBox.TabIndex = 8;
-            this.NameTextBox.TextChanged += new System.EventHandler(this.NameTextBox_TextChanged);
             // 
             // IdVkTextBox
             // 
@@ -177,7 +175,6 @@
             this.IdVkTextBox.ReadOnly = true;
             this.IdVkTextBox.Size = new System.Drawing.Size(331, 20);
             this.IdVkTextBox.TabIndex = 9;
-            this.IdVkTextBox.TextChanged += new System.EventHandler(this.IdVkTextBox_TextChanged);
             // 
             // EmailTextBox
             // 
@@ -189,7 +186,6 @@
             this.EmailTextBox.ReadOnly = true;
             this.EmailTextBox.Size = new System.Drawing.Size(331, 20);
             this.EmailTextBox.TabIndex = 10;
-            this.EmailTextBox.TextChanged += new System.EventHandler(this.EmailTextBox_TextChanged);
             // 
             // PhoneTextBox
             // 
@@ -201,7 +197,6 @@
             this.PhoneTextBox.ReadOnly = true;
             this.PhoneTextBox.Size = new System.Drawing.Size(331, 20);
             this.PhoneTextBox.TabIndex = 11;
-            this.PhoneTextBox.TextChanged += new System.EventHandler(this.PhoneTextBox_TextChanged);
             // 
             // BirthdayDateTimePicker
             // 
@@ -259,6 +254,7 @@
             this.FindTextBox.Name = "FindTextBox";
             this.FindTextBox.Size = new System.Drawing.Size(225, 20);
             this.FindTextBox.TabIndex = 13;
+            this.FindTextBox.TextChanged += new System.EventHandler(this.FindTextBox_TextChanged);
             // 
             // label7
             // 
@@ -385,6 +381,8 @@
             this.Controls.Add(this.splitContainer1);
             this.Name = "MainForm";
             this.Text = "ContactsApp";
+            this.Activated += new System.EventHandler(this.MainForm_Activated);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
