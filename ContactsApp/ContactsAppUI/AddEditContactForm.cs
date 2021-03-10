@@ -13,8 +13,14 @@ namespace ContactsAppUI
 {
     public partial class AddEditContactForm : Form
     {
+        /// <summary>
+        /// Поле, хранящее список контактов
+        /// </summary>
         private Contact _contact = new Contact();
 
+        /// <summary>
+        /// Свойтво списка контактов 
+        /// </summary>
         public Contact Contact
         {
             get
@@ -49,7 +55,11 @@ namespace ContactsAppUI
             try
             {
                 Contact.Surname = SurnameTextBox.Text;
+                Contact.Name = NameTextBox.Text;
                 Contact.PhoneNumber.Number = PhoneTextBox.Text;
+                Contact.Birthday = BirthdayDateTimePicker.Value;
+                Contact.Email = EmailTextBox.Text;
+                Contact.IdVk = IdVkTextBox.Text;
                 DialogResult = DialogResult.OK;
                 this.Close();
             }
