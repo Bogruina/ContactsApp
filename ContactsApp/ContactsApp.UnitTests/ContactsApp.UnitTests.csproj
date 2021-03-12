@@ -56,6 +56,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="TestData\NoValidData.json" />
+    <None Include="TestData\ValidData.json" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ContactsApp\ContactsApp.csproj">
@@ -63,6 +65,7 @@
       <Name>ContactsApp</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

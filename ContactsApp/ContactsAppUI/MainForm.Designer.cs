@@ -46,13 +46,13 @@
             this.FindTextBox = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.AddContactButton = new System.Windows.Forms.Button();
-            this.EditContactButton = new System.Windows.Forms.Button();
-            this.DeleteContactButton = new System.Windows.Forms.Button();
-            this.FileMenu = new System.Windows.Forms.MenuStrip();
             this.EditMenu = new System.Windows.Forms.MenuStrip();
             this.HelpMenu = new System.Windows.Forms.MenuStrip();
+            this.FileMenu = new System.Windows.Forms.MenuStrip();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.EditContactButton = new System.Windows.Forms.Button();
+            this.AddContactButton = new System.Windows.Forms.Button();
+            this.DeleteContactButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -71,7 +71,7 @@
             this.ContactsListBox.ItemHeight = 16;
             this.ContactsListBox.Location = new System.Drawing.Point(12, 58);
             this.ContactsListBox.MaximumSize = new System.Drawing.Size(800, 600);
-            this.ContactsListBox.MinimumSize = new System.Drawing.Size(263, 0);
+            this.ContactsListBox.MinimumSize = new System.Drawing.Size(263, 4);
             this.ContactsListBox.Name = "ContactsListBox";
             this.ContactsListBox.Size = new System.Drawing.Size(263, 356);
             this.ContactsListBox.TabIndex = 5;
@@ -283,81 +283,6 @@
             this.tableLayoutPanel2.Size = new System.Drawing.Size(158, 25);
             this.tableLayoutPanel2.TabIndex = 14;
             // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.tableLayoutPanel1.ColumnCount = 3;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 35F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 35F));
-            this.tableLayoutPanel1.Controls.Add(this.EditContactButton, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.AddContactButton, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.DeleteContactButton, 2, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 406);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(104, 32);
-            this.tableLayoutPanel1.TabIndex = 13;
-            // 
-            // AddContactButton
-            // 
-            this.AddContactButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.AddContactButton.AutoSize = true;
-            this.AddContactButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.AddContactButton.BackColor = System.Drawing.SystemColors.Control;
-            this.AddContactButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.AddContactButton.ForeColor = System.Drawing.Color.Transparent;
-            this.AddContactButton.Image = ((System.Drawing.Image)(resources.GetObject("AddContactButton.Image")));
-            this.AddContactButton.Location = new System.Drawing.Point(3, 7);
-            this.AddContactButton.Name = "AddContactButton";
-            this.AddContactButton.Size = new System.Drawing.Size(22, 22);
-            this.AddContactButton.TabIndex = 6;
-            this.AddContactButton.UseVisualStyleBackColor = false;
-            this.AddContactButton.Click += new System.EventHandler(this.AddContactButton_Click);
-            // 
-            // EditContactButton
-            // 
-            this.EditContactButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.EditContactButton.AutoSize = true;
-            this.EditContactButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.EditContactButton.BackColor = System.Drawing.SystemColors.Control;
-            this.EditContactButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.EditContactButton.ForeColor = System.Drawing.Color.Transparent;
-            this.EditContactButton.Image = ((System.Drawing.Image)(resources.GetObject("EditContactButton.Image")));
-            this.EditContactButton.Location = new System.Drawing.Point(37, 5);
-            this.EditContactButton.MinimumSize = new System.Drawing.Size(24, 24);
-            this.EditContactButton.Name = "EditContactButton";
-            this.EditContactButton.Size = new System.Drawing.Size(24, 24);
-            this.EditContactButton.TabIndex = 7;
-            this.EditContactButton.UseVisualStyleBackColor = false;
-            this.EditContactButton.Click += new System.EventHandler(this.EditContactButton_Click);
-            // 
-            // DeleteContactButton
-            // 
-            this.DeleteContactButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.DeleteContactButton.AutoSize = true;
-            this.DeleteContactButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.DeleteContactButton.BackColor = System.Drawing.SystemColors.Control;
-            this.DeleteContactButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.DeleteContactButton.ForeColor = System.Drawing.Color.Transparent;
-            this.DeleteContactButton.Image = ((System.Drawing.Image)(resources.GetObject("DeleteContactButton.Image")));
-            this.DeleteContactButton.Location = new System.Drawing.Point(72, 5);
-            this.DeleteContactButton.MinimumSize = new System.Drawing.Size(24, 24);
-            this.DeleteContactButton.Name = "DeleteContactButton";
-            this.DeleteContactButton.Size = new System.Drawing.Size(24, 24);
-            this.DeleteContactButton.TabIndex = 8;
-            this.DeleteContactButton.UseVisualStyleBackColor = false;
-            this.DeleteContactButton.Click += new System.EventHandler(this.DeleteContactButton_Click);
-            // 
-            // FileMenu
-            // 
-            this.FileMenu.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.FileMenu.Location = new System.Drawing.Point(0, 0);
-            this.FileMenu.Name = "FileMenu";
-            this.FileMenu.Size = new System.Drawing.Size(43, 24);
-            this.FileMenu.TabIndex = 1;
-            // 
             // EditMenu
             // 
             this.EditMenu.BackColor = System.Drawing.SystemColors.ButtonFace;
@@ -376,12 +301,88 @@
             this.HelpMenu.TabIndex = 3;
             this.HelpMenu.Text = "menuStrip3";
             // 
+            // FileMenu
+            // 
+            this.FileMenu.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.FileMenu.Location = new System.Drawing.Point(0, 0);
+            this.FileMenu.Name = "FileMenu";
+            this.FileMenu.Size = new System.Drawing.Size(43, 24);
+            this.FileMenu.TabIndex = 1;
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.tableLayoutPanel1.ColumnCount = 3;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.tableLayoutPanel1.Controls.Add(this.EditContactButton, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.AddContactButton, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.DeleteContactButton, 2, 0);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 406);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(104, 32);
+            this.tableLayoutPanel1.TabIndex = 13;
+            // 
+            // EditContactButton
+            // 
+            this.EditContactButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.EditContactButton.AutoSize = true;
+            this.EditContactButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.EditContactButton.BackColor = System.Drawing.SystemColors.Control;
+            this.EditContactButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.EditContactButton.ForeColor = System.Drawing.Color.Transparent;
+            this.EditContactButton.Image = ((System.Drawing.Image)(resources.GetObject("EditContactButton.Image")));
+            this.EditContactButton.Location = new System.Drawing.Point(37, 5);
+            this.EditContactButton.MinimumSize = new System.Drawing.Size(24, 24);
+            this.EditContactButton.Name = "EditContactButton";
+            this.EditContactButton.Size = new System.Drawing.Size(24, 24);
+            this.EditContactButton.TabIndex = 7;
+            this.EditContactButton.UseVisualStyleBackColor = false;
+            this.EditContactButton.Click += new System.EventHandler(this.EditContactButton_Click);
+            // 
+            // AddContactButton
+            // 
+            this.AddContactButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.AddContactButton.AutoSize = true;
+            this.AddContactButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.AddContactButton.BackColor = System.Drawing.SystemColors.Control;
+            this.AddContactButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.AddContactButton.ForeColor = System.Drawing.Color.Transparent;
+            this.AddContactButton.Image = ((System.Drawing.Image)(resources.GetObject("AddContactButton.Image")));
+            this.AddContactButton.Location = new System.Drawing.Point(3, 7);
+            this.AddContactButton.Name = "AddContactButton";
+            this.AddContactButton.Size = new System.Drawing.Size(22, 22);
+            this.AddContactButton.TabIndex = 6;
+            this.AddContactButton.UseVisualStyleBackColor = false;
+            this.AddContactButton.Click += new System.EventHandler(this.AddContactButton_Click);
+            // 
+            // DeleteContactButton
+            // 
+            this.DeleteContactButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.DeleteContactButton.AutoSize = true;
+            this.DeleteContactButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.DeleteContactButton.BackColor = System.Drawing.SystemColors.Control;
+            this.DeleteContactButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.DeleteContactButton.ForeColor = System.Drawing.Color.Transparent;
+            this.DeleteContactButton.Image = ((System.Drawing.Image)(resources.GetObject("DeleteContactButton.Image")));
+            this.DeleteContactButton.Location = new System.Drawing.Point(72, 7);
+            this.DeleteContactButton.MinimumSize = new System.Drawing.Size(16, 16);
+            this.DeleteContactButton.Name = "DeleteContactButton";
+            this.DeleteContactButton.Size = new System.Drawing.Size(22, 22);
+            this.DeleteContactButton.TabIndex = 8;
+            this.DeleteContactButton.UseVisualStyleBackColor = false;
+            this.DeleteContactButton.Click += new System.EventHandler(this.DeleteContactButton_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.splitContainer1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
             this.Text = "ContactsApp";
             this.Activated += new System.EventHandler(this.MainForm_Activated);
