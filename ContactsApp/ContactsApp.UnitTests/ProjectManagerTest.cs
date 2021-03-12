@@ -8,10 +8,10 @@ namespace ContactsApp.UnitTests
     [TestFixture]
     public class ProjectManagerTest
     {
-        private string _pathDirectory = Environment.CurrentDirectory;
-        private const string _validDataPath =  @"\TestData\ValidData.json";
-        private const string _outputDataPath = @"\TestData\OutputData.json";
-        [TestCase(TestName = "asdasd")]
+        private const string _validDataPath = "..\\..\\..\\source\\repos\\ContactsApp\\ContactsApp\\ContactsApp.UnitTests\\TestData\\ValidData.json";
+        private const string _outputDataPath = "..\\..\\..\\source\\repos\\ContactsApp\\ContactsApp\\ContactsApp.UnitTests\\TestData\\OutputData.json";
+        
+        [TestCase(TestName = "Positive test save to file")]
         public void SaveToFile_ResultCorrectValue()
         {
             //SetUp
@@ -22,11 +22,11 @@ namespace ContactsApp.UnitTests
                 new DateTime(2000, 12, 12), "fakemail@gmail.com",
                 "id121212");
             project.Contacts.Add(contact);
-            var expected = File.ReadAllText(Environment.CurrentDirectory + _validDataPath);
+            var expected = File.ReadAllText(_validDataPath);
 
             //Testing
-            ProjectManager.SaveToFile(project, (Environment.CurrentDirectory + _outputDataPath));
-            var actual = File.ReadAllText((Environment.CurrentDirectory + _outputDataPath));
+            ProjectManager.SaveToFile(project, (_outputDataPath));
+            var actual = File.ReadAllText((_outputDataPath));
 
             //Assest
             Assert.AreEqual(expected, actual);

@@ -33,7 +33,6 @@ namespace ContactsAppUI
             this.label1 = new System.Windows.Forms.Label();
             this.BirthdayDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
-            this.PhoneTextBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.EmailTextBox = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -44,6 +43,7 @@ namespace ContactsAppUI
             this.SurnameTextBox = new System.Windows.Forms.TextBox();
             this.CancelButton = new System.Windows.Forms.Button();
             this.OkButton = new System.Windows.Forms.Button();
+            this.PhoneTextBox = new System.Windows.Forms.MaskedTextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -81,17 +81,6 @@ namespace ContactsAppUI
             this.label2.Size = new System.Drawing.Size(38, 13);
             this.label2.TabIndex = 14;
             this.label2.Text = "Name:";
-            // 
-            // PhoneTextBox
-            // 
-            this.PhoneTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.PhoneTextBox.Location = new System.Drawing.Point(70, 87);
-            this.PhoneTextBox.MinimumSize = new System.Drawing.Size(150, 20);
-            this.PhoneTextBox.Name = "PhoneTextBox";
-            this.PhoneTextBox.Size = new System.Drawing.Size(311, 20);
-            this.PhoneTextBox.TabIndex = 23;
-            this.PhoneTextBox.TextChanged += new System.EventHandler(this.PhoneTextBox_TextChanged);
             // 
             // label3
             // 
@@ -202,17 +191,26 @@ namespace ContactsAppUI
             this.OkButton.UseVisualStyleBackColor = true;
             this.OkButton.Click += new System.EventHandler(this.OkButton_Click);
             // 
+            // PhoneTextBox
+            // 
+            this.PhoneTextBox.Location = new System.Drawing.Point(70, 87);
+            this.PhoneTextBox.Mask = "7(000)000-00-00";
+            this.PhoneTextBox.Name = "PhoneTextBox";
+            this.PhoneTextBox.Size = new System.Drawing.Size(310, 20);
+            this.PhoneTextBox.TabIndex = 27;
+            this.PhoneTextBox.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.PhoneTextBox_MaskInputRejected);
+            // 
             // AddEditContactForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(392, 196);
+            this.Controls.Add(this.PhoneTextBox);
             this.Controls.Add(this.OkButton);
             this.Controls.Add(this.CancelButton);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.BirthdayDateTimePicker);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.PhoneTextBox);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.EmailTextBox);
             this.Controls.Add(this.label4);
@@ -237,7 +235,6 @@ namespace ContactsAppUI
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DateTimePicker BirthdayDateTimePicker;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox PhoneTextBox;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox EmailTextBox;
         private System.Windows.Forms.Label label4;
@@ -248,5 +245,6 @@ namespace ContactsAppUI
         private System.Windows.Forms.TextBox SurnameTextBox;
         private System.Windows.Forms.Button CancelButton;
         private System.Windows.Forms.Button OkButton;
+        private System.Windows.Forms.MaskedTextBox PhoneTextBox;
     }
 }

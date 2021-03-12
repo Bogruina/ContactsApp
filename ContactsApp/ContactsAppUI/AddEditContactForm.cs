@@ -52,11 +52,13 @@ namespace ContactsAppUI
 
         private void OkButton_Click(object sender, EventArgs e)
         {
+            var numberPhone = PhoneTextBox.Text.Replace("("
+                , "").Replace(")", "").Replace("-", "");
             try
             {
                 Contact.Surname = SurnameTextBox.Text;
                 Contact.Name = NameTextBox.Text;
-                Contact.PhoneNumber.Number = PhoneTextBox.Text;
+                Contact.PhoneNumber.Number = numberPhone;
                 Contact.Birthday = BirthdayDateTimePicker.Value;
                 Contact.Email = EmailTextBox.Text;
                 Contact.IdVk = IdVkTextBox.Text;
@@ -188,6 +190,11 @@ namespace ContactsAppUI
                 IdVkTextBox.BackColor = Color.Red;
 
             }
+        }
+
+        private void PhoneTextBox_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
+           
         }
     }
 }
