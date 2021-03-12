@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using ContactsApp;
 
@@ -84,7 +78,6 @@ namespace ContactsAppUI
             EditContactButton.FlatStyle = FlatStyle.Flat;
             DeleteContactButton.FlatAppearance.BorderSize = 0;
             DeleteContactButton.FlatStyle = FlatStyle.Flat;
-
         }
 
         private void Form1_Load(object sender, EventArgs e)

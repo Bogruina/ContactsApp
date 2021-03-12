@@ -94,9 +94,7 @@ namespace ContactsAppUI
             }
             catch(ArgumentException exception)
             {
-
                 SurnameTextBox.BackColor = Color.Red;
-
             }
         }
 
