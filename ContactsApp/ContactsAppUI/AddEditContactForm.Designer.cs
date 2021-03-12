@@ -29,6 +29,7 @@ namespace ContactsAppUI
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddEditContactForm));
             this.label1 = new System.Windows.Forms.Label();
             this.BirthdayDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
@@ -220,6 +221,7 @@ namespace ContactsAppUI
             this.Controls.Add(this.NameTextBox);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.SurnameTextBox);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(408, 235);
             this.MinimumSize = new System.Drawing.Size(408, 235);
             this.Name = "AddEditContactForm";

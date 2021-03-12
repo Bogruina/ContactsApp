@@ -1,0 +1,87 @@
+{
+  "Contacts": [
+    {
+      "Surname": "Быков",
+      "PhoneNumber": { "Number": "79964156633" },
+      "Name": "Сергей",
+      "Birthday": "2000-12-12T00:00:00",
+      "Email": "fakemail@gmail.com",
+      "IdVk": "id121212"
+      dsfsdfsdfsdf
+      ;lasf;lsdafas3df5sda
+    },
+    
+    {
+      "Surname": "Холод",
+      "PhoneNumber": { "Number": "79084568877" },
+      "Name": "Алексей",
+      "Birthday": "2000-12-12T00:00:00",
+      "Email": "fakemail@gmail.com",
+      "IdVk": "id121212"
+    },
+    {
+      "Surname": "Абрикосов",
+      "PhoneNumber": { "Number": "79236078860" },
+      "Name": "Андрей",
+      "Birthday": "2001-03-09T00:00:00",
+      "Email": "asdasd@gmail.com",
+      "IdVk": "id1212123"
+    },
+    {
+      "Surname": "Чернышевский",
+      "PhoneNumber": { "Number": "79954445566" },
+      "Name": "Александр",
+      "Birthday": "1980-03-13T00:00:00",
+      "Email": "igor@gmail.com",
+      "IdVk": "id222222"
+    },
+    {
+      "Surname": "Горбунова",
+      "PhoneNumber": { "Number": "79992281337" },
+      "Name": "Валерия",
+      "Birthday": "2001-06-08T00:00:00",
+      "Email": "solnishko@chmok.com",
+      "IdVk": "id2281337"
+    },
+    {
+      "Surname": "Медведев",
+      "PhoneNumber": { "Number": "79964445566" },
+      "Name": "Максим",
+      "Birthday": "2000-01-01T00:00:00",
+      "Email": "adasdas@gmail.com",
+      "IdVk": "id12121221"
+    },
+    {
+      "Surname": "Терёхов",
+      "PhoneNumber": { "Number": "79564156633" },
+      "Name": "Иван",
+      "Birthday": "2001-05-27T00:00:00",
+      "Email": "ivanterexov@gmail.com",
+      "IdVk": "id85213423"
+    },
+    {
+      "Surname": "Яблоков",
+      "PhoneNumber": { "Number": "79967894422" },
+      "Name": "Илья",
+      "Birthday": "2000-07-12T00:00:00",
+      "Email": "appleIlya@mail.ru",
+      "IdVk": "id55342231"
+    },
+    {
+      "Surname": "Апельсинов",
+      "PhoneNumber": { "Number": "79992281337" },
+      "Name": "Василий",
+      "Birthday": "2002-04-15T00:00:00",
+      "Email": "apelsinchik@mail.ru",
+      "IdVk": "id444555666"
+    },
+    {
+      "Surname": "Киров",
+      "PhoneNumber": { "Number": "79945541122" },
+      "Name": "Марк",
+      "Birthday": "2004-05-02T00:00:00",
+      "Email": "mark@gmail.com",
+      "IdVk": "id45512352"
+    }
+  ]
+}

@@ -4,7 +4,7 @@ using NUnit.Framework;
 namespace ContactsApp.UnitTests
 {
     [TestFixture]
-    class ProjectTest
+    public class ProjectTest
     {
         [TestCase(TestName = "Project getter positive test")]
         public void Project__CorrectValue_ReturnsSameValue()
