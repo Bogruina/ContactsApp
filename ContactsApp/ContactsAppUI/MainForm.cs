@@ -45,6 +45,12 @@ namespace ContactsAppUI
         /// </summary>
         public void EditContact()
         {
+            if (ContactsListBox.SelectedIndex == -1)
+            {
+                MessageBox.Show("Contact is not selected for editing", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             var selectedIndex = ContactsListBox.SelectedIndex;
             var selectedData = contacts.Contacts[selectedIndex];
             var editContact = new AddEditContactForm();
@@ -61,6 +67,12 @@ namespace ContactsAppUI
         /// </summary>
         public void RemoveContact()
         {
+            if (ContactsListBox.SelectedIndex == -1)
+            {
+                MessageBox.Show("Contact is not selected for deletion", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             var selectedIndex = ContactsListBox.SelectedIndex;
             contacts.Contacts.RemoveAt(selectedIndex);
             ProjectManager.SaveToFile(contacts, ProjectManager.DefaultFilename);
@@ -189,6 +201,11 @@ namespace ContactsAppUI
             {
                 ContactsListBox.SetSelected(findIndex, true);
             }
+        }
+
+        private void PhoneTextBox_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
+
         }
     }
 }

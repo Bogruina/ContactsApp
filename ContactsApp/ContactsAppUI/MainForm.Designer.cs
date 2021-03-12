@@ -40,7 +40,6 @@
             this.NameTextBox = new System.Windows.Forms.TextBox();
             this.IdVkTextBox = new System.Windows.Forms.TextBox();
             this.EmailTextBox = new System.Windows.Forms.TextBox();
-            this.PhoneTextBox = new System.Windows.Forms.TextBox();
             this.BirthdayDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.FindTextBox = new System.Windows.Forms.TextBox();
@@ -53,6 +52,7 @@
             this.EditContactButton = new System.Windows.Forms.Button();
             this.AddContactButton = new System.Windows.Forms.Button();
             this.DeleteContactButton = new System.Windows.Forms.Button();
+            this.PhoneTextBox = new System.Windows.Forms.MaskedTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -187,17 +187,6 @@
             this.EmailTextBox.Size = new System.Drawing.Size(331, 20);
             this.EmailTextBox.TabIndex = 13;
             // 
-            // PhoneTextBox
-            // 
-            this.PhoneTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.PhoneTextBox.Location = new System.Drawing.Point(73, 104);
-            this.PhoneTextBox.MinimumSize = new System.Drawing.Size(150, 20);
-            this.PhoneTextBox.Name = "PhoneTextBox";
-            this.PhoneTextBox.ReadOnly = true;
-            this.PhoneTextBox.Size = new System.Drawing.Size(331, 20);
-            this.PhoneTextBox.TabIndex = 12;
-            // 
             // BirthdayDateTimePicker
             // 
             this.BirthdayDateTimePicker.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -232,10 +221,10 @@
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.PhoneTextBox);
             this.splitContainer1.Panel2.Controls.Add(this.label1);
             this.splitContainer1.Panel2.Controls.Add(this.BirthdayDateTimePicker);
             this.splitContainer1.Panel2.Controls.Add(this.label2);
-            this.splitContainer1.Panel2.Controls.Add(this.PhoneTextBox);
             this.splitContainer1.Panel2.Controls.Add(this.label3);
             this.splitContainer1.Panel2.Controls.Add(this.EmailTextBox);
             this.splitContainer1.Panel2.Controls.Add(this.label4);
@@ -376,6 +365,16 @@
             this.DeleteContactButton.UseVisualStyleBackColor = false;
             this.DeleteContactButton.Click += new System.EventHandler(this.DeleteContactButton_Click);
             // 
+            // PhoneTextBox
+            // 
+            this.PhoneTextBox.Location = new System.Drawing.Point(73, 104);
+            this.PhoneTextBox.Mask = "+0 (000) 000-00-00";
+            this.PhoneTextBox.Name = "PhoneTextBox";
+            this.PhoneTextBox.ReadOnly = true;
+            this.PhoneTextBox.Size = new System.Drawing.Size(331, 20);
+            this.PhoneTextBox.TabIndex = 15;
+            this.PhoneTextBox.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.PhoneTextBox_MaskInputRejected);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -415,7 +414,6 @@
         private System.Windows.Forms.TextBox NameTextBox;
         private System.Windows.Forms.TextBox IdVkTextBox;
         private System.Windows.Forms.TextBox EmailTextBox;
-        private System.Windows.Forms.TextBox PhoneTextBox;
         private System.Windows.Forms.DateTimePicker BirthdayDateTimePicker;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.Button AddContactButton;
@@ -428,6 +426,7 @@
         private System.Windows.Forms.MenuStrip EditMenu;
         private System.Windows.Forms.MenuStrip HelpMenu;
         private System.Windows.Forms.MenuStrip FileMenu;
+        private System.Windows.Forms.MaskedTextBox PhoneTextBox;
     }
 }
 
