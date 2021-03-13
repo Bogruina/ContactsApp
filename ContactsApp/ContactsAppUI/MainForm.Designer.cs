@@ -199,7 +199,7 @@
             this.BirthdayDateTimePicker.Name = "BirthdayDateTimePicker";
             this.BirthdayDateTimePicker.Size = new System.Drawing.Size(92, 20);
             this.BirthdayDateTimePicker.TabIndex = 11;
-            this.BirthdayDateTimePicker.Value = new System.DateTime(2021, 2, 27, 0, 0, 0, 0);
+            this.BirthdayDateTimePicker.Value = new System.DateTime(2021, 2, 12, 0, 0, 0, 0);
             // 
             // splitContainer1
             // 
