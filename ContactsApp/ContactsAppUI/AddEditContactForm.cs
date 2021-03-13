@@ -100,20 +100,6 @@ namespace ContactsAppUI
            
         }
 
-        private void PhoneTextBox_TextChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                PhoneTextBox.BackColor = Color.White;
-                Contact.PhoneNumber.Number = PhoneTextBox.Text;
-            }
-            catch (ArgumentException exception)
-            {
-
-                PhoneTextBox.BackColor = Color.Red;
-
-            }
-        }
 
         private void AddEditContactForm_Load(object sender, EventArgs e)
         {
