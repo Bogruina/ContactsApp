@@ -35,7 +35,8 @@ namespace ContactsAppUI
             {
                 var newContact = addContact.Contact;
                 contacts.Contacts.Add(newContact);
-                ProjectManager.SaveToFile(contacts, ProjectManager.DefaultFilename);
+                ProjectManager.SaveToFile(contacts, ProjectManager.DefaultPath, 
+                    ProjectManager.DefaultFilePath);
             }
         }
 
@@ -59,7 +60,8 @@ namespace ContactsAppUI
             var updatedContact = editContact.Contact;
             contacts.Contacts.RemoveAt(selectedIndex);
             contacts.Contacts.Insert(selectedIndex, updatedContact);
-            ProjectManager.SaveToFile(contacts, ProjectManager.DefaultFilename);
+            ProjectManager.SaveToFile(contacts, ProjectManager.DefaultPath,
+                ProjectManager.DefaultFilePath);
         }
 
         /// <summary>
@@ -75,7 +77,8 @@ namespace ContactsAppUI
             }
             var selectedIndex = ContactsListBox.SelectedIndex;
             contacts.Contacts.RemoveAt(selectedIndex);
-            ProjectManager.SaveToFile(contacts, ProjectManager.DefaultFilename);
+            ProjectManager.SaveToFile(contacts, ProjectManager.DefaultPath,
+                ProjectManager.DefaultFilePath);
         }
 
         public MainForm()
@@ -92,9 +95,9 @@ namespace ContactsAppUI
             DeleteContactButton.FlatStyle = FlatStyle.Flat;
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void MainForm_Load(object sender, EventArgs e)
         {
-            contacts = ProjectManager.LoadFromFile(ProjectManager.DefaultFilename);
+            contacts = ProjectManager.LoadFromFile(ProjectManager.DefaultFilePath);
             ToolStripMenuItem fileItem = new ToolStripMenuItem("File");
             ToolStripMenuItem exitItem = new ToolStripMenuItem("Exit");
             fileItem.DropDownItems.Add(exitItem);
@@ -191,7 +194,8 @@ namespace ContactsAppUI
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            ProjectManager.SaveToFile(contacts,ProjectManager.DefaultFilename);
+            ProjectManager.SaveToFile(contacts, ProjectManager.DefaultPath,
+                ProjectManager.DefaultFilePath);
         }
 
         private void FindTextBox_TextChanged(object sender, EventArgs e)

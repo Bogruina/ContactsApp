@@ -19,16 +19,27 @@ namespace ContactsApp
         /// Свойство позволяет получить путь к файлу
         /// /***/AppData/Roaming/ContactsApp/contacts.json
         /// </summary>
-        public static string DefaultFilename
+        public static string DefaultPath
         {
             get
             {
                 var appDataFolder =
                     Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-                var filename = appDataFolder + @"/ContactsApp/contacts.json";
-                return filename;
+                var path = appDataFolder + @"\ContactsApp";
+                return path;
             }
         }
+
+        public static string DefaultFilePath
+        {
+            get
+            {
+                var filePath = DefaultPath + @"\contacts.json";
+                return filePath;
+            }
+        }
+
+
 
         /// <summary>
         /// Метод сериализации
@@ -36,15 +47,20 @@ namespace ContactsApp
         /// <param name="project">список контактов</param>
         /// <param name="filename">название файла, в который будет
         /// производиться сериализация</param>
-        public static void SaveToFile(Project project, string filename)
+        public static void SaveToFile(Project project,string dirPath , string filePath)
         {
-            if (!File.Exists((filename)))
+            if (!Directory.Exists(dirPath))
             {
-                File.Create(filename);
+                Directory.CreateDirectory(dirPath);
+            }
+
+            if (!File.Exists((filePath)))
+            {
+                File.Create(filePath);
             }
 
             JsonSerializer serializer = new JsonSerializer();
-            using (StreamWriter sw = new StreamWriter(filename, false,
+            using (StreamWriter sw = new StreamWriter(filePath, false,
                 Encoding.GetEncoding(CurrentEncoding)))
             {
                 using (JsonWriter writer = new JsonTextWriter(sw))
@@ -63,7 +79,9 @@ namespace ContactsApp
         {
             if (!File.Exists(filename))
             {
-                throw new ArgumentException("Файл не существует.");
+                Project emptyProject = new Project();
+                return emptyProject;
+
             }
 
             JsonSerializer serializer = new JsonSerializer();
@@ -72,8 +90,16 @@ namespace ContactsApp
             using (JsonReader reader = new JsonTextReader(sr))
             {
                 var project = serializer.Deserialize<Project>(reader);
+
+                if (project == null)
+                {
+                    Project emptyProject = new Project();
+                    return emptyProject;
+                }
+
                 return project;
             }
+            
         }
     }
 }
