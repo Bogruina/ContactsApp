@@ -86,6 +86,11 @@ namespace ContactsAppUI
             InitializeComponent();
             this.Text = "ContactsApp";
             this.Size = new Size(800, 500);
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            contacts = ProjectManager.LoadFromFile(ProjectManager.DefaultFilePath);
             AddContactButton.FlatAppearance.BorderSize = 0;
             AddContactButton.FlatStyle = FlatStyle.Flat;
             this.BirthdayDateTimePicker.Enabled = false;
@@ -93,11 +98,7 @@ namespace ContactsAppUI
             EditContactButton.FlatStyle = FlatStyle.Flat;
             DeleteContactButton.FlatAppearance.BorderSize = 0;
             DeleteContactButton.FlatStyle = FlatStyle.Flat;
-        }
-
-        private void MainForm_Load(object sender, EventArgs e)
-        {
-            contacts = ProjectManager.LoadFromFile(ProjectManager.DefaultFilePath);
+           
             ToolStripMenuItem fileItem = new ToolStripMenuItem("File");
             ToolStripMenuItem exitItem = new ToolStripMenuItem("Exit");
             fileItem.DropDownItems.Add(exitItem);
