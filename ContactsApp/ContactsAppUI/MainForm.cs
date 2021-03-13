@@ -29,7 +29,7 @@ namespace ContactsAppUI
         /// </summary>
         public void AddContact()
         {
-            var addContact = new AddEditContactForm();
+            var addContact = new ContactForm();
             addContact.ShowDialog();
             if (addContact.DialogResult == DialogResult.OK)
             {
@@ -54,7 +54,7 @@ namespace ContactsAppUI
             }
             var selectedIndex = ContactsListBox.SelectedIndex;
             var selectedData = contacts.Contacts[selectedIndex];
-            var editContact = new AddEditContactForm();
+            var editContact = new ContactForm();
             editContact.Contact = selectedData;
             editContact.ShowDialog();
             var updatedContact = editContact.Contact;

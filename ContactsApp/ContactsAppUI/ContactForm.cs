@@ -11,7 +11,7 @@ using ContactsApp;
 
 namespace ContactsAppUI
 {
-    public partial class AddEditContactForm : Form
+    public partial class ContactForm : Form
     {
         /// <summary>
         /// Поле, хранящее список контактов
@@ -45,7 +45,7 @@ namespace ContactsAppUI
 
        
 
-        public AddEditContactForm()
+        public ContactForm()
         {
             InitializeComponent();
         }
