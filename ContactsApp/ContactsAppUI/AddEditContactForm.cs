@@ -69,15 +69,10 @@ namespace ContactsAppUI
             {
                DialogResult result =  MessageBox.Show(exception.Message, "Input Error",
                    MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
-               if (result == DialogResult.Retry)
+               if (result == DialogResult.Cancel)
                {
-                   
-               }
-               else
-               { 
                    Close();
-               }
-
+                }
             }
         }
 
