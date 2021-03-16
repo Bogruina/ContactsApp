@@ -67,7 +67,7 @@ namespace ContactsAppUI
             this.BirthdayDateTimePicker.MinimumSize = new System.Drawing.Size(150, 20);
             this.BirthdayDateTimePicker.Name = "BirthdayDateTimePicker";
             this.BirthdayDateTimePicker.Size = new System.Drawing.Size(150, 20);
-            this.BirthdayDateTimePicker.TabIndex = 24;
+            this.BirthdayDateTimePicker.TabIndex = 2;
             this.BirthdayDateTimePicker.Value = new System.DateTime(2021, 2, 27, 0, 0, 0, 0);
             this.BirthdayDateTimePicker.ValueChanged += new System.EventHandler(this.BirthdayDateTimePicker_ValueChanged);
             // 
@@ -101,7 +101,7 @@ namespace ContactsAppUI
             this.EmailTextBox.MinimumSize = new System.Drawing.Size(150, 20);
             this.EmailTextBox.Name = "EmailTextBox";
             this.EmailTextBox.Size = new System.Drawing.Size(311, 20);
-            this.EmailTextBox.TabIndex = 22;
+            this.EmailTextBox.TabIndex = 5;
             this.EmailTextBox.TextChanged += new System.EventHandler(this.EmailTextBox_TextChanged);
             // 
             // label4
@@ -123,7 +123,7 @@ namespace ContactsAppUI
             this.IdVkTextBox.MinimumSize = new System.Drawing.Size(150, 20);
             this.IdVkTextBox.Name = "IdVkTextBox";
             this.IdVkTextBox.Size = new System.Drawing.Size(311, 20);
-            this.IdVkTextBox.TabIndex = 21;
+            this.IdVkTextBox.TabIndex = 6;
             this.IdVkTextBox.TextChanged += new System.EventHandler(this.IdVkTextBox_TextChanged);
             // 
             // label5
@@ -145,7 +145,7 @@ namespace ContactsAppUI
             this.NameTextBox.MinimumSize = new System.Drawing.Size(150, 20);
             this.NameTextBox.Name = "NameTextBox";
             this.NameTextBox.Size = new System.Drawing.Size(311, 20);
-            this.NameTextBox.TabIndex = 20;
+            this.NameTextBox.TabIndex = 1;
             this.NameTextBox.TextChanged += new System.EventHandler(this.NameTextBox_TextChanged);
             // 
             // label6
@@ -167,16 +167,15 @@ namespace ContactsAppUI
             this.SurnameTextBox.MinimumSize = new System.Drawing.Size(150, 20);
             this.SurnameTextBox.Name = "SurnameTextBox";
             this.SurnameTextBox.Size = new System.Drawing.Size(311, 20);
-            this.SurnameTextBox.TabIndex = 19;
+            this.SurnameTextBox.TabIndex = 0;
             this.SurnameTextBox.TextChanged += new System.EventHandler(this.SurnameTextBox_TextChanged);
-            this.SurnameTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.SurnameTextBox_Validating);
             // 
             // CancelButton
             // 
             this.CancelButton.Location = new System.Drawing.Point(305, 162);
             this.CancelButton.Name = "CancelButton";
             this.CancelButton.Size = new System.Drawing.Size(75, 23);
-            this.CancelButton.TabIndex = 25;
+            this.CancelButton.TabIndex = 8;
             this.CancelButton.Text = "Cancel";
             this.CancelButton.UseVisualStyleBackColor = true;
             this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
@@ -186,7 +185,7 @@ namespace ContactsAppUI
             this.OkButton.Location = new System.Drawing.Point(224, 162);
             this.OkButton.Name = "OkButton";
             this.OkButton.Size = new System.Drawing.Size(75, 23);
-            this.OkButton.TabIndex = 26;
+            this.OkButton.TabIndex = 7;
             this.OkButton.Text = "OK";
             this.OkButton.UseVisualStyleBackColor = true;
             this.OkButton.Click += new System.EventHandler(this.OkButton_Click);
@@ -196,11 +195,10 @@ namespace ContactsAppUI
             this.PhoneTextBox.Location = new System.Drawing.Point(70, 87);
             this.PhoneTextBox.Mask = "7(000)000-00-00";
             this.PhoneTextBox.Name = "PhoneTextBox";
-            this.PhoneTextBox.Size = new System.Drawing.Size(310, 20);
-            this.PhoneTextBox.TabIndex = 27;
-            this.PhoneTextBox.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.PhoneTextBox_MaskInputRejected);
+            this.PhoneTextBox.Size = new System.Drawing.Size(311, 20);
+            this.PhoneTextBox.TabIndex = 4;
             // 
-            // AddEditContactForm
+            // ContactForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -219,12 +217,13 @@ namespace ContactsAppUI
             this.Controls.Add(this.NameTextBox);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.SurnameTextBox);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(408, 235);
             this.MinimumSize = new System.Drawing.Size(408, 235);
-            this.Name = "AddEditContactForm";
+            this.Name = "ContactForm";
             this.Text = "Add/Edit Contact";
-            this.Load += new System.EventHandler(this.AddEditContactForm_Load);
+            this.Load += new System.EventHandler(this.ContactForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
