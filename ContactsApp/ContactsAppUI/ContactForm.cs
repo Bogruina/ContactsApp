@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using ContactsApp;
 
@@ -19,7 +14,7 @@ namespace ContactsAppUI
         private Contact _contact = new Contact();
 
         /// <summary>
-        /// Свойтво списка контактов 
+        /// Cвойство списка контактов 
         /// </summary>
         public Contact Contact
         {
@@ -29,10 +24,11 @@ namespace ContactsAppUI
             }
             set
             {
-                _contact = value;
-                
+                _contact = (Contact)value.Clone();
+
                 if (_contact != null)
                 {
+                    
                     SurnameTextBox.Text = _contact.Surname;
                     NameTextBox.Text = _contact.Name;
                     PhoneTextBox.Text = _contact.PhoneNumber.Number;
@@ -42,9 +38,7 @@ namespace ContactsAppUI
                 }
             }
         }
-
-       
-
+        
         public ContactForm()
         {
             InitializeComponent();
@@ -67,12 +61,13 @@ namespace ContactsAppUI
             }
             catch (ArgumentException exception)
             {
-               DialogResult result =  MessageBox.Show(exception.Message, "Input Error",
-                   MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
-               if (result == DialogResult.Cancel)
-               {
-                   Close();
-                }
+               DialogResult result =  MessageBox.Show
+               (
+                   exception.Message, 
+                   "Input Error",
+                   MessageBoxButtons.OK, 
+                   MessageBoxIcon.Error
+                );
             }
         }
 
@@ -86,8 +81,8 @@ namespace ContactsAppUI
         {
             try
             {
-                SurnameTextBox.BackColor = Color.White;
                 Contact.Surname = SurnameTextBox.Text;
+                SurnameTextBox.BackColor = Color.White;
             }
             catch(ArgumentException exception)
             {
@@ -95,13 +90,7 @@ namespace ContactsAppUI
             }
         }
 
-        private void SurnameTextBox_Validating(object sender, CancelEventArgs e)
-        {
-           
-        }
-
-
-        private void AddEditContactForm_Load(object sender, EventArgs e)
+        private void ContactForm_Load(object sender, EventArgs e)
         {
             ToolTip tip = new ToolTip();
             tip.SetToolTip(SurnameTextBox, "50 letters max.");
@@ -122,9 +111,7 @@ namespace ContactsAppUI
             }
             catch (ArgumentException exception)
             {
-
                 NameTextBox.BackColor = Color.Red;
-
             }
         }
 
@@ -132,14 +119,12 @@ namespace ContactsAppUI
         {
             try
             {
-                BirthdayDateTimePicker.BackColor = Color.White;
                 Contact.Birthday = BirthdayDateTimePicker.Value;
+                BirthdayDateTimePicker.BackColor = Color.White;
             }
             catch (ArgumentException exception)
             {
-
                 BirthdayDateTimePicker.BackColor = Color.Red;
-
             }
         }
 
@@ -147,14 +132,12 @@ namespace ContactsAppUI
         {
             try
             {
-                EmailTextBox.BackColor = Color.White;
                 Contact.Email = EmailTextBox.Text;
+                EmailTextBox.BackColor = Color.White;
             }
             catch (ArgumentException exception)
             {
-
                 EmailTextBox.BackColor = Color.Red;
-
             }
         }
 
@@ -162,8 +145,8 @@ namespace ContactsAppUI
         {
             try
             {
+                Contact.Email = EmailTextBox.Text;
                 IdVkTextBox.BackColor = Color.White;
-                Contact.IdVk = IdVkTextBox.Text;
             }
             catch (ArgumentException exception)
             {
@@ -171,11 +154,6 @@ namespace ContactsAppUI
                 IdVkTextBox.BackColor = Color.Red;
 
             }
-        }
-
-        private void PhoneTextBox_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
-        {
-           
         }
     }
 }

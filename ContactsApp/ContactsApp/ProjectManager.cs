@@ -25,20 +25,10 @@ namespace ContactsApp
             {
                 var appDataFolder =
                     Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-                var path = appDataFolder + @"\ContactsApp";
+                var path = appDataFolder + @"\ContactsApp\contact.json";
                 return path;
             }
         }
-
-        public static string DefaultFilePath
-        {
-            get
-            {
-                var filePath = DefaultPath + @"\contacts.json";
-                return filePath;
-            }
-        }
-
 
 
         /// <summary>
@@ -47,16 +37,13 @@ namespace ContactsApp
         /// <param name="project">список контактов</param>
         /// <param name="filename">название файла, в который будет
         /// производиться сериализация</param>
-        public static void SaveToFile(Project project,string dirPath , string filePath)
+        public static void SaveToFile(Project project, string filePath)
         {
-            if (!Directory.Exists(dirPath))
+            var directoryFile = Path.GetDirectoryName(filePath);
+            DirectoryInfo directoryInfo = new DirectoryInfo(directoryFile);
+            if (!Directory.Exists(directoryFile))
             {
-                Directory.CreateDirectory(dirPath);
-            }
-
-            if (!File.Exists((filePath)))
-            {
-                File.Create(filePath);
+                directoryInfo.Create();
             }
 
             JsonSerializer serializer = new JsonSerializer();
@@ -81,23 +68,23 @@ namespace ContactsApp
             {
                 Project emptyProject = new Project();
                 return emptyProject;
-
             }
 
+            var project = new Project();
             JsonSerializer serializer = new JsonSerializer();
             using (StreamReader sr = new StreamReader(filename, 
                 Encoding.GetEncoding(CurrentEncoding)))
             using (JsonReader reader = new JsonTextReader(sr))
             {
-                var project = serializer.Deserialize<Project>(reader);
-
-                if (project == null)
+                try
                 {
-                    Project emptyProject = new Project();
-                    return emptyProject;
+                    project = serializer.Deserialize<Project>(reader);
+                    return project;
                 }
-
-                return project;
+                catch (Exception exception)
+                {
+                    return project;
+                }
             }
             
         }
