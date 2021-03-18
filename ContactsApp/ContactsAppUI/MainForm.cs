@@ -12,6 +12,8 @@ namespace ContactsAppUI
         /// </summary>
         private Project _project = new Project();
 
+        private Project _substringSortProject = new Project();
+
         public MainForm()
         {
             InitializeComponent();
@@ -134,9 +136,16 @@ namespace ContactsAppUI
             ProjectManager.SaveToFile(_project, ProjectManager.DefaultPath);
         }
 
+        private void SortContactsListBox()
+        {
+            _project = _project.SortProject("as",_project);
+            FillContactsListBox();
+        }
+
         private void MainForm_Load(object sender, EventArgs e)
         {
             _project = ProjectManager.LoadFromFile(ProjectManager.DefaultPath);
+            SortContactsListBox();
 
         }
 
