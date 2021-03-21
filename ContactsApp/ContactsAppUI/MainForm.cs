@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 using ContactsApp;
 
@@ -12,7 +14,15 @@ namespace ContactsAppUI
         /// </summary>
         private Project _project = new Project();
 
-        private Project _substringSortProject = new Project();
+        /// <summary>
+        /// Список контактов хранит контакты после поиска
+        /// </summary>
+        private Project _substringFindProject = new Project();
+
+        /// <summary>
+        /// Список хранит контакты, у которых сегодня день рождения
+        /// </summary>
+        private Project _birthdayProject = new Project();
 
         public MainForm()
         {
@@ -20,7 +30,50 @@ namespace ContactsAppUI
         }
 
         /// <summary>
-        /// Метод заполняет ListBox контактами
+        /// Метод заполняет BirthdayLabal фамилиями именинников или сообщает,
+        /// что именинников сегодня нет
+        /// </summary>
+        private void FillBirthdayLabel()
+        {
+            _birthdayProject = Project.CreateBirthdayList(_project);
+            if (_birthdayProject.Contacts.Count == 0)
+            {
+                BirthdayLabel.Text = "There are no birthday parties today";
+                return;
+            }
+
+            string birthdayStringList = "";
+            foreach (var contact in _birthdayProject.Contacts)
+            {
+                birthdayStringList = birthdayStringList + contact.Surname + ", ";
+            }
+
+            birthdayStringList =  birthdayStringList.TrimEnd(' ');
+            birthdayStringList = birthdayStringList.TrimEnd(',');
+            BirthdayLabel.Text = "Today birthday to: \n" + birthdayStringList;
+        }
+
+        /// <summary>
+        /// Сортировка списка контактов
+        /// </summary>
+        private void SortProject()
+        {
+           _project = _project.SortProject(_project);
+        }
+
+        /// <summary>
+        /// Сортировка списка контактов после поиска по подстроке
+        /// </summary>
+        private void SortSubstringFindProject()
+        {
+            _substringFindProject.Contacts.Clear();
+            _substringFindProject = _project.SortProject(FindTextBox.Text, _project);
+
+            FillFindContactsList();
+        }
+
+        /// <summary>
+        /// Метод заполняет ContactsListBox контактами
         /// </summary>
         private void FillContactsListBox()
         {
@@ -28,6 +81,19 @@ namespace ContactsAppUI
             for (int i = 0; i < _project.Contacts.Count; i++)
             {
                 ContactsListBox.Items.Add(_project.Contacts[i].Surname);
+            }
+        }
+
+        /// <summary>
+        /// Метод заполняет ContactsListBox при поиске 
+        /// </summary>
+        private void FillFindContactsList()
+        {
+            
+            ContactsListBox.Items.Clear();
+            for (int i = 0; i < _substringFindProject.Contacts.Count; i++)
+            {
+                ContactsListBox.Items.Add(_substringFindProject.Contacts[i].Surname);
             }
         }
         /// <summary>
@@ -71,7 +137,9 @@ namespace ContactsAppUI
                 _project.Contacts.Add(newContact);
                 ProjectManager.SaveToFile(_project, ProjectManager.DefaultPath);
                 ContactsListBox.Items.Add(newContact.Surname);
-
+                SortProject();
+                SortSubstringFindProject();
+                FillBirthdayLabel();
             }
         }
 
@@ -85,23 +153,41 @@ namespace ContactsAppUI
             {
                 return;
             }
+
             var selectedIndex = ContactsListBox.SelectedIndex;
             var selectedData = _project.Contacts[selectedIndex];
+            if (ContactsListBox.Items.Count != _project.Contacts.Count)
+            {
+                selectedData = _substringFindProject.Contacts[selectedIndex];
+            }
+
             var editContact = new ContactForm();
             editContact.Contact = selectedData;
             editContact.ShowDialog();
             if (editContact.DialogResult == DialogResult.OK)
             {
                 var updatedContact = editContact.Contact;
-                _project.Contacts.RemoveAt(selectedIndex);
-                _project.Contacts.Insert(selectedIndex, updatedContact);
+                var updatedContactIndex = _project.Contacts.IndexOf(selectedData);
+                _project.Contacts.RemoveAt(updatedContactIndex);
+                _project.Contacts.Insert(updatedContactIndex, updatedContact);
+               
+                if (_substringFindProject.Contacts.Count != 0)
+                {
+                    _substringFindProject.Contacts.RemoveAt(selectedIndex);
+                    _substringFindProject.Contacts.Insert(selectedIndex, updatedContact);
+                }
+
                 ProjectManager.SaveToFile(_project, ProjectManager.DefaultPath);
+               
                 ContactsListBox.Items.RemoveAt(selectedIndex);
                 ContactsListBox.Items.Insert(selectedIndex, updatedContact.Surname);
+
                 UpdateTextBoxes(selectedIndex);
                 ContactsListBox.SelectedIndex = selectedIndex;
+                SortProject();
+                SortSubstringFindProject();
+                FillBirthdayLabel();
             }
-
         }
 
         /// <summary>
@@ -115,11 +201,16 @@ namespace ContactsAppUI
             }
 
             int selectedIndex = ContactsListBox.SelectedIndex;
+            var selectedData = _project.Contacts[selectedIndex];
+            if (ContactsListBox.Items.Count != _project.Contacts.Count)
+            {
+                selectedData = _substringFindProject.Contacts[selectedIndex];
+            }
 
             var dialogRelust = MessageBox.Show
             (
                 $"Are you sure you want to delete the contact " +
-                $"{_project.Contacts[selectedIndex].Surname} ",
+                $"{selectedData.Surname} ",
                 "Deleting a Contact",
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question
@@ -130,22 +221,23 @@ namespace ContactsAppUI
                 return;
             }
 
-            _project.Contacts.RemoveAt(selectedIndex);
+            int removeContactIndex = _project.Contacts.IndexOf(selectedData);
+            _project.Contacts.RemoveAt(removeContactIndex);
             ContactsListBox.Items.RemoveAt(selectedIndex);
+
             ClearTextBoxes();
             ProjectManager.SaveToFile(_project, ProjectManager.DefaultPath);
-        }
-
-        private void SortContactsListBox()
-        {
-            _project = _project.SortProject("as",_project);
-            FillContactsListBox();
+            SortProject();
+            SortSubstringFindProject();
+            FillBirthdayLabel();
         }
 
         private void MainForm_Load(object sender, EventArgs e)
         {
             _project = ProjectManager.LoadFromFile(ProjectManager.DefaultPath);
-            SortContactsListBox();
+            SortProject();
+            FillContactsListBox();
+            FillBirthdayLabel();
 
         }
 
@@ -155,9 +247,13 @@ namespace ContactsAppUI
             {
                 return;
             }
-            
             int index = ContactsListBox.SelectedIndex;
-            var contact = _project.Contacts[index]; 
+            var contact = _project.Contacts[index];
+            if (ContactsListBox.Items.Count != _project.Contacts.Count)
+            {
+                contact = _substringFindProject.Contacts[index];
+            }
+            
             SurnameTextBox.Text = contact.Surname;
             NameTextBox.Text = contact.Name;
             PhoneTextBox.Text = _project.Contacts[index].PhoneNumber.Number;
@@ -181,11 +277,6 @@ namespace ContactsAppUI
             EditContact();
         }
 
-        private void MainForm_Activated(object sender, EventArgs e)
-        {
-            FillContactsListBox();
-        }
-
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             ProjectManager.SaveToFile(_project, ProjectManager.DefaultPath);
@@ -193,11 +284,7 @@ namespace ContactsAppUI
 
         private void FindTextBox_TextChanged(object sender, EventArgs e)
         {
-            int findIndex = ContactsListBox.FindString(FindTextBox.Text);
-            if (findIndex >= 0)
-            {
-                ContactsListBox.SetSelected(findIndex, true);
-            }
+            SortSubstringFindProject();
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -224,6 +311,15 @@ namespace ContactsAppUI
         {
             var helpForm = new AboutForm();
             helpForm.Show();
+        }
+
+
+        private void ContactsListBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Delete)
+            {
+                RemoveContact();
+            }
         }
     }
 }

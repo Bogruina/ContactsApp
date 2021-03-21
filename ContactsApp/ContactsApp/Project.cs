@@ -54,5 +54,27 @@ namespace ContactsApp
             return sortedContacts;
 
         }
+
+        /// <summary>
+        /// Метод составляет список именинников
+        /// </summary>
+        /// <param name="project">Список контактов</param>
+        /// <returns></returns>
+        public static Project CreateBirthdayList(Project project)
+        {
+            var today = DateTime.Today;
+            Project birthdayContacts = new Project();
+            foreach (var contact in project.Contacts)
+            {
+                if (contact.Birthday.Day == today.Day &&
+                    contact.Birthday.Month == today.Month)
+                {
+                    birthdayContacts.Contacts.Add(contact);
+                }
+            }
+
+            return birthdayContacts;
+
+        }
     }
 }
