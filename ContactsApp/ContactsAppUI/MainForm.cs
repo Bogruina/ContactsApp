@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
 using System.Windows.Forms;
 using ContactsApp;
 
@@ -96,6 +93,7 @@ namespace ContactsAppUI
                 ContactsListBox.Items.Add(_substringFindProject.Contacts[i].Surname);
             }
         }
+       
         /// <summary>
         /// Метод обновляет все значения в TextBox
         /// </summary>
