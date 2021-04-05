@@ -13,6 +13,10 @@ namespace ContactsAppUI
         /// </summary>
         private Contact _contact = new Contact();
 
+        private readonly Color _incorrectInputColor = Color.LightSalmon;
+
+        private readonly Color _correctInputColor = Color.White;
+
         /// <summary>
         /// Cвойство списка контактов 
         /// </summary>
@@ -46,8 +50,10 @@ namespace ContactsAppUI
 
         private void OkButton_Click(object sender, EventArgs e)
         {
-            var numberPhone = PhoneTextBox.Text.Replace("("
-                , "").Replace(")", "").Replace("-", "");
+            var numberPhone = PhoneTextBox.Text.
+                Replace("(", "").
+                Replace(")", "").
+                Replace("-", "");
             try
             {
                 Contact.Surname = SurnameTextBox.Text;
@@ -82,11 +88,11 @@ namespace ContactsAppUI
             try
             {
                 Contact.Surname = SurnameTextBox.Text;
-                SurnameTextBox.BackColor = Color.White;
+                SurnameTextBox.BackColor = _correctInputColor;
             }
             catch(ArgumentException exception)
             {
-                SurnameTextBox.BackColor = Color.Red;
+                SurnameTextBox.BackColor = _incorrectInputColor;
             }
         }
 
@@ -106,12 +112,12 @@ namespace ContactsAppUI
         {
             try
             {
-                NameTextBox.BackColor = Color.White;
                 Contact.Name = NameTextBox.Text;
+                NameTextBox.BackColor = _correctInputColor;
             }
             catch (ArgumentException exception)
             {
-                NameTextBox.BackColor = Color.Red;
+                NameTextBox.BackColor = _incorrectInputColor;
             }
         }
 
@@ -120,11 +126,11 @@ namespace ContactsAppUI
             try
             {
                 Contact.Birthday = BirthdayDateTimePicker.Value;
-                BirthdayDateTimePicker.BackColor = Color.White;
+                BirthdayDateTimePicker.BackColor = _correctInputColor;
             }
             catch (ArgumentException exception)
             {
-                BirthdayDateTimePicker.BackColor = Color.Red;
+                BirthdayDateTimePicker.BackColor = _incorrectInputColor;
             }
         }
 
@@ -133,11 +139,11 @@ namespace ContactsAppUI
             try
             {
                 Contact.Email = EmailTextBox.Text;
-                EmailTextBox.BackColor = Color.White;
+                EmailTextBox.BackColor = _correctInputColor;
             }
             catch (ArgumentException exception)
             {
-                EmailTextBox.BackColor = Color.Red;
+                EmailTextBox.BackColor = _incorrectInputColor;
             }
         }
 
@@ -146,12 +152,12 @@ namespace ContactsAppUI
             try
             {
                 Contact.Email = EmailTextBox.Text;
-                IdVkTextBox.BackColor = Color.White;
+                IdVkTextBox.BackColor = _correctInputColor;
             }
             catch (ArgumentException exception)
             {
 
-                IdVkTextBox.BackColor = Color.Red;
+                IdVkTextBox.BackColor = _incorrectInputColor;
 
             }
         }

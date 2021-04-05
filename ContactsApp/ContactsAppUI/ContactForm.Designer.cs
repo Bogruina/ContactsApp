@@ -174,7 +174,7 @@ namespace ContactsAppUI
             // 
             this.CancelButton.Location = new System.Drawing.Point(305, 162);
             this.CancelButton.Name = "CancelButton";
-            this.CancelButton.Size = new System.Drawing.Size(75, 23);
+            this.CancelButton.Size = new System.Drawing.Size(76, 23);
             this.CancelButton.TabIndex = 8;
             this.CancelButton.Text = "Cancel";
             this.CancelButton.UseVisualStyleBackColor = true;

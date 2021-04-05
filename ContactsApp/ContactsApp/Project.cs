@@ -20,13 +20,13 @@ namespace ContactsApp
         /// </summary>
         /// <param name="contacts">Список контактов</param>
         /// <returns></returns>
-        public Project SortProject(Project contacts)
+        public List<Contact> SortProject()
         {
-            Project sortedContacts = new Project();
-            var result  = contacts.Contacts.OrderBy(contact => contact.Surname);
+            List<Contact> sortedContacts = new List<Contact>();
+            var result  = Contacts.OrderBy(contact => contact.Surname);
             foreach (var contact in result)
             {
-                sortedContacts.Contacts.Add(contact);
+                sortedContacts.Add(contact);
             }
 
             return sortedContacts;
@@ -39,16 +39,16 @@ namespace ContactsApp
         /// <param name="substring">Подстрока для сортировки</param>
         /// <param name="contacts">Список контактов</param>
         /// <returns></returns>
-        public Project SortProject(string substring, Project contacts)
+        public List<Contact> SortProject(string substring)
         {
-            var sortedContacts = new Project();
-            var result = from c in contacts.Contacts
+            List<Contact> sortedContacts = new List<Contact>();
+            var result = from c in Contacts
                                              where c.Surname.Contains(substring) || c.Name.Contains(substring)
                                              orderby c.Surname, c.Name
                                              select c;
             foreach (var contact in result)
             {
-                sortedContacts.Contacts.Add(contact);
+                sortedContacts.Add(contact);
             }
 
             return sortedContacts;
@@ -60,16 +60,16 @@ namespace ContactsApp
         /// </summary>
         /// <param name="project">Список контактов</param>
         /// <returns></returns>
-        public static Project CreateBirthdayList(Project project)
+        public  List<string> CreateBirthdayList()
         {
             var today = DateTime.Today;
-            Project birthdayContacts = new Project();
-            foreach (var contact in project.Contacts)
+            List<string> birthdayContacts = new List<string>();
+            foreach (var contact in Contacts)
             {
                 if (contact.Birthday.Day == today.Day &&
                     contact.Birthday.Month == today.Month)
                 {
-                    birthdayContacts.Contacts.Add(contact);
+                    birthdayContacts.Add(contact.Surname);
                 }
             }
 

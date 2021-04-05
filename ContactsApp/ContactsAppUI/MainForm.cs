@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 using ContactsApp;
 
@@ -14,12 +16,12 @@ namespace ContactsAppUI
         /// <summary>
         /// Список контактов хранит контакты после поиска
         /// </summary>
-        private Project _substringFindProject = new Project();
+        private List<Contact> _viewingListContacts = new List<Contact>();
 
         /// <summary>
         /// Список хранит контакты, у которых сегодня день рождения
         /// </summary>
-        private Project _birthdayProject = new Project();
+        private List<string> _birthdaySurnameList = new List<string>();
 
         public MainForm()
         {
@@ -32,21 +34,15 @@ namespace ContactsAppUI
         /// </summary>
         private void FillBirthdayLabel()
         {
-            _birthdayProject = Project.CreateBirthdayList(_project);
-            if (_birthdayProject.Contacts.Count == 0)
+            _birthdaySurnameList = _project.CreateBirthdayList();
+            if (_birthdaySurnameList.Count == 0)
             {
                 BirthdayLabel.Text = "There are no birthday parties today";
                 return;
             }
 
-            string birthdayStringList = "";
-            foreach (var contact in _birthdayProject.Contacts)
-            {
-                birthdayStringList = birthdayStringList + contact.Surname + ", ";
-            }
+            string birthdayStringList = string.Join(", ", _birthdaySurnameList);
 
-            birthdayStringList =  birthdayStringList.TrimEnd(' ');
-            birthdayStringList = birthdayStringList.TrimEnd(',');
             BirthdayLabel.Text = "Today birthday to: \n" + birthdayStringList;
         }
 
@@ -55,7 +51,8 @@ namespace ContactsAppUI
         /// </summary>
         private void SortProject()
         {
-           _project = _project.SortProject(_project);
+            _viewingListContacts.Clear();
+            _viewingListContacts = _project.SortProject();
         }
 
         /// <summary>
@@ -63,10 +60,10 @@ namespace ContactsAppUI
         /// </summary>
         private void SortSubstringFindProject()
         {
-            _substringFindProject.Contacts.Clear();
-            _substringFindProject = _project.SortProject(FindTextBox.Text, _project);
+            _viewingListContacts.Clear();
+            _viewingListContacts = _project.SortProject(FindTextBox.Text);
 
-            FillFindContactsList();
+            FillContactsListBox();
         }
 
         /// <summary>
@@ -75,24 +72,12 @@ namespace ContactsAppUI
         private void FillContactsListBox()
         {
             ContactsListBox.Items.Clear();
-            for (int i = 0; i < _project.Contacts.Count; i++)
+            for (int i = 0; i < _viewingListContacts.Count; i++)
             {
-                ContactsListBox.Items.Add(_project.Contacts[i].Surname);
+                ContactsListBox.Items.Add(_viewingListContacts[i].Surname);
             }
         }
 
-        /// <summary>
-        /// Метод заполняет ContactsListBox при поиске 
-        /// </summary>
-        private void FillFindContactsList()
-        {
-            
-            ContactsListBox.Items.Clear();
-            for (int i = 0; i < _substringFindProject.Contacts.Count; i++)
-            {
-                ContactsListBox.Items.Add(_substringFindProject.Contacts[i].Surname);
-            }
-        }
        
         /// <summary>
         /// Метод обновляет все значения в TextBox
@@ -103,10 +88,10 @@ namespace ContactsAppUI
             var contact = _project.Contacts[index];
             SurnameTextBox.Text = contact.Surname;
             NameTextBox.Text = contact.Name;
-            PhoneTextBox.Text = _project.Contacts[index].PhoneNumber.Number;
-            BirthdayDateTimePicker.Value = _project.Contacts[index].Birthday;
-            EmailTextBox.Text = _project.Contacts[index].Email;
-            IdVkTextBox.Text = _project.Contacts[index].IdVk;
+            PhoneTextBox.Text = contact.PhoneNumber.Number;
+            BirthdayDateTimePicker.Value = contact.Birthday;
+            EmailTextBox.Text = contact.Email;
+            IdVkTextBox.Text = contact.IdVk;
         }
 
         /// <summary>
@@ -153,12 +138,8 @@ namespace ContactsAppUI
             }
 
             var selectedIndex = ContactsListBox.SelectedIndex;
-            var selectedData = _project.Contacts[selectedIndex];
-            if (ContactsListBox.Items.Count != _project.Contacts.Count)
-            {
-                selectedData = _substringFindProject.Contacts[selectedIndex];
-            }
-
+            var selectedData = _viewingListContacts[selectedIndex];
+           
             var editContact = new ContactForm();
             editContact.Contact = selectedData;
             editContact.ShowDialog();
@@ -168,22 +149,17 @@ namespace ContactsAppUI
                 var updatedContactIndex = _project.Contacts.IndexOf(selectedData);
                 _project.Contacts.RemoveAt(updatedContactIndex);
                 _project.Contacts.Insert(updatedContactIndex, updatedContact);
-               
-                if (_substringFindProject.Contacts.Count != 0)
-                {
-                    _substringFindProject.Contacts.RemoveAt(selectedIndex);
-                    _substringFindProject.Contacts.Insert(selectedIndex, updatedContact);
-                }
 
                 ProjectManager.SaveToFile(_project, ProjectManager.DefaultPath);
                
                 ContactsListBox.Items.RemoveAt(selectedIndex);
                 ContactsListBox.Items.Insert(selectedIndex, updatedContact.Surname);
 
-                UpdateTextBoxes(selectedIndex);
-                ContactsListBox.SelectedIndex = selectedIndex;
+                UpdateTextBoxes(updatedContactIndex);
+
                 SortProject();
                 SortSubstringFindProject();
+                ContactsListBox.SelectedIndex = selectedIndex;
                 FillBirthdayLabel();
             }
         }
@@ -202,7 +178,7 @@ namespace ContactsAppUI
             var selectedData = _project.Contacts[selectedIndex];
             if (ContactsListBox.Items.Count != _project.Contacts.Count)
             {
-                selectedData = _substringFindProject.Contacts[selectedIndex];
+                selectedData = _viewingListContacts[selectedIndex];
             }
 
             var dialogRelust = MessageBox.Show
@@ -249,15 +225,15 @@ namespace ContactsAppUI
             var contact = _project.Contacts[index];
             if (ContactsListBox.Items.Count != _project.Contacts.Count)
             {
-                contact = _substringFindProject.Contacts[index];
+                contact = _viewingListContacts[index];
             }
             
             SurnameTextBox.Text = contact.Surname;
             NameTextBox.Text = contact.Name;
-            PhoneTextBox.Text = _project.Contacts[index].PhoneNumber.Number;
-            BirthdayDateTimePicker.Value = _project.Contacts[index].Birthday;
-            EmailTextBox.Text = _project.Contacts[index].Email;
-            IdVkTextBox.Text = _project.Contacts[index].IdVk;
+            PhoneTextBox.Text = contact.PhoneNumber.Number;
+            BirthdayDateTimePicker.Value = contact.Birthday;
+            EmailTextBox.Text = contact.Email;
+            IdVkTextBox.Text = contact.IdVk;
         }
 
         private void AddContactButton_Click(object sender, EventArgs e)

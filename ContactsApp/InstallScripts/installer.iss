@@ -41,16 +41,15 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-Source: "Release\ContactsApp.dll"; DestDir: "{app}";
+Source: "Release\*.dll"; DestDir: "{app}";
 Source: "Release\ContactsAppUI.exe"; DestDir: "{app}";
-Source: "Release\Newtonsoft.Json.dll"; DestDir: "{app}";
-Source: "..\ContactsAppUI\Images\Actor_16x.ico"; DestDir: "{app}";
+Source: "..\Icon.ico"; DestDir: "{app}";
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 
 [Icons]
 Name: "{group}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; WorkingDir: "{app}"; IconFilename: {app}\Icon.ico
-Name: "{group}\uninslall"; Filename: "{uninstallexe}"; IconFilename: {app}\Actor_16x.ico
+Name: "{group}\uninslall"; Filename: "{uninstallexe}"; IconFilename: {app}\Icon.ico
 Name: "{commondesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: desktopicon; IconFilename: {app}\Icon.ico
 
 [Run]
