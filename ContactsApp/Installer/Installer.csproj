@@ -51,11 +51,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>md "$(SolutionDir)InstallScripts\Release"
-md "$(SolutionDir)InstallScripts\Installers"
-xcopy "$(SolutionDir)ContactsAppUI\$(OutDir)*.dll"  "$(SolutionDir)InstallScripts\Release"
-xcopy "$(SolutionDir)ContactsAppUI\$(OutDir)*.exe"  "$(SolutionDir)InstallScripts\Release"
-"$(SolutionDir)packages\Tools.InnoSetup.6.1.2\tools\ISCC.exe" "$(SolutionDir)InstallScripts\installer.iss"
+    <PostBuildEvent>"$(SolutionDir)packages\Tools.InnoSetup.6.1.2\tools\ISCC.exe" "$(SolutionDir)InstallScripts\installer.iss"
 rd /s /q  "$(SolutionDir)InstallScripts\Release"
 </PostBuildEvent>
   </PropertyGroup>
