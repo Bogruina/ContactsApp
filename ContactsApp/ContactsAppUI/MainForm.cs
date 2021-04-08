@@ -175,7 +175,7 @@ namespace ContactsAppUI
             }
 
             int selectedIndex = ContactsListBox.SelectedIndex;
-            var selectedData = _project.Contacts[selectedIndex];
+            var selectedData = _viewingListContacts[selectedIndex];
             if (ContactsListBox.Items.Count != _project.Contacts.Count)
             {
                 selectedData = _viewingListContacts[selectedIndex];
@@ -222,12 +222,7 @@ namespace ContactsAppUI
                 return;
             }
             int index = ContactsListBox.SelectedIndex;
-            var contact = _project.Contacts[index];
-            if (ContactsListBox.Items.Count != _project.Contacts.Count)
-            {
-                contact = _viewingListContacts[index];
-            }
-            
+            var contact = _viewingListContacts[index];
             SurnameTextBox.Text = contact.Surname;
             NameTextBox.Text = contact.Name;
             PhoneTextBox.Text = contact.PhoneNumber.Number;
