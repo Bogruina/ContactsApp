@@ -16,12 +16,12 @@ namespace ContactsAppUI
         /// <summary>
         /// Список контактов хранит контакты после поиска
         /// </summary>
-        private List<Contact> _viewingListContacts = new List<Contact>();
+        private List<Contact> _viewingContacts = new List<Contact>();
 
         /// <summary>
-        /// Список хранит контакты, у которых сегодня день рождения
+        /// Список хранит фамилии контактов, у которых сегодня день рождения
         /// </summary>
-        private List<string> _birthdaySurnameList = new List<string>();
+        private List<string> _birthdaysSurname = new List<string>();
 
         public MainForm()
         {
@@ -34,14 +34,14 @@ namespace ContactsAppUI
         /// </summary>
         private void FillBirthdayLabel()
         {
-            _birthdaySurnameList = _project.CreateBirthdayList();
-            if (_birthdaySurnameList.Count == 0)
+            _birthdaysSurname = _project.CreateBirthdayList();
+            if (_birthdaysSurname.Count == 0)
             {
                 BirthdayLabel.Text = "There are no birthday parties today";
                 return;
             }
 
-            string birthdayStringList = string.Join(", ", _birthdaySurnameList);
+            string birthdayStringList = string.Join(", ", _birthdaysSurname);
 
             BirthdayLabel.Text = "Today birthday to: \n" + birthdayStringList;
         }
@@ -51,8 +51,8 @@ namespace ContactsAppUI
         /// </summary>
         private void SortProject()
         {
-            _viewingListContacts.Clear();
-            _viewingListContacts = _project.SortProject();
+            _viewingContacts.Clear();
+            _viewingContacts = _project.SortProject();
         }
 
         /// <summary>
@@ -60,8 +60,8 @@ namespace ContactsAppUI
         /// </summary>
         private void SortSubstringFindProject()
         {
-            _viewingListContacts.Clear();
-            _viewingListContacts = _project.SortProject(FindTextBox.Text);
+            _viewingContacts.Clear();
+            _viewingContacts = _project.SortProject(FindTextBox.Text);
 
             FillContactsListBox();
         }
@@ -72,9 +72,9 @@ namespace ContactsAppUI
         private void FillContactsListBox()
         {
             ContactsListBox.Items.Clear();
-            for (int i = 0; i < _viewingListContacts.Count; i++)
+            for (int i = 0; i < _viewingContacts.Count; i++)
             {
-                ContactsListBox.Items.Add(_viewingListContacts[i].Surname);
+                ContactsListBox.Items.Add(_viewingContacts[i].Surname);
             }
         }
 
@@ -138,7 +138,7 @@ namespace ContactsAppUI
             }
 
             var selectedIndex = ContactsListBox.SelectedIndex;
-            var selectedData = _viewingListContacts[selectedIndex];
+            var selectedData = _viewingContacts[selectedIndex];
            
             var editContact = new ContactForm();
             editContact.Contact = selectedData;
@@ -175,10 +175,10 @@ namespace ContactsAppUI
             }
 
             int selectedIndex = ContactsListBox.SelectedIndex;
-            var selectedData = _viewingListContacts[selectedIndex];
+            var selectedData = _viewingContacts[selectedIndex];
             if (ContactsListBox.Items.Count != _project.Contacts.Count)
             {
-                selectedData = _viewingListContacts[selectedIndex];
+                selectedData = _viewingContacts[selectedIndex];
             }
 
             var dialogRelust = MessageBox.Show
@@ -222,7 +222,7 @@ namespace ContactsAppUI
                 return;
             }
             int index = ContactsListBox.SelectedIndex;
-            var contact = _viewingListContacts[index];
+            var contact = _viewingContacts[index];
             SurnameTextBox.Text = contact.Surname;
             NameTextBox.Text = contact.Name;
             PhoneTextBox.Text = contact.PhoneNumber.Number;
