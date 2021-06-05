@@ -81,7 +81,7 @@
             this.ContactsListBox.MaximumSize = new System.Drawing.Size(800, 600);
             this.ContactsListBox.MinimumSize = new System.Drawing.Size(263, 4);
             this.ContactsListBox.Name = "ContactsListBox";
-            this.ContactsListBox.Size = new System.Drawing.Size(290, 356);
+            this.ContactsListBox.Size = new System.Drawing.Size(299, 356);
             this.ContactsListBox.TabIndex = 5;
             this.ContactsListBox.SelectedIndexChanged += new System.EventHandler(this.ContactsListBox_SelectedIndexChanged);
             this.ContactsListBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ContactsListBox_KeyDown);
@@ -160,7 +160,7 @@
             this.SurnameTextBox.MinimumSize = new System.Drawing.Size(150, 20);
             this.SurnameTextBox.Name = "SurnameTextBox";
             this.SurnameTextBox.ReadOnly = true;
-            this.SurnameTextBox.Size = new System.Drawing.Size(420, 20);
+            this.SurnameTextBox.Size = new System.Drawing.Size(411, 20);
             this.SurnameTextBox.TabIndex = 9;
             // 
             // NameTextBox
@@ -171,7 +171,7 @@
             this.NameTextBox.MinimumSize = new System.Drawing.Size(150, 20);
             this.NameTextBox.Name = "NameTextBox";
             this.NameTextBox.ReadOnly = true;
-            this.NameTextBox.Size = new System.Drawing.Size(420, 20);
+            this.NameTextBox.Size = new System.Drawing.Size(411, 20);
             this.NameTextBox.TabIndex = 10;
             // 
             // IdVkTextBox
@@ -182,7 +182,7 @@
             this.IdVkTextBox.MinimumSize = new System.Drawing.Size(150, 20);
             this.IdVkTextBox.Name = "IdVkTextBox";
             this.IdVkTextBox.ReadOnly = true;
-            this.IdVkTextBox.Size = new System.Drawing.Size(420, 20);
+            this.IdVkTextBox.Size = new System.Drawing.Size(411, 20);
             this.IdVkTextBox.TabIndex = 14;
             // 
             // EmailTextBox
@@ -193,7 +193,7 @@
             this.EmailTextBox.MinimumSize = new System.Drawing.Size(150, 20);
             this.EmailTextBox.Name = "EmailTextBox";
             this.EmailTextBox.ReadOnly = true;
-            this.EmailTextBox.Size = new System.Drawing.Size(420, 20);
+            this.EmailTextBox.Size = new System.Drawing.Size(411, 20);
             this.EmailTextBox.TabIndex = 13;
             // 
             // BirthdayDateTimePicker
@@ -207,7 +207,7 @@
             this.BirthdayDateTimePicker.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
             this.BirthdayDateTimePicker.MinimumSize = new System.Drawing.Size(50, 20);
             this.BirthdayDateTimePicker.Name = "BirthdayDateTimePicker";
-            this.BirthdayDateTimePicker.Size = new System.Drawing.Size(142, 20);
+            this.BirthdayDateTimePicker.Size = new System.Drawing.Size(133, 20);
             this.BirthdayDateTimePicker.TabIndex = 11;
             this.BirthdayDateTimePicker.Value = new System.DateTime(2021, 2, 12, 0, 0, 0, 0);
             // 
@@ -247,7 +247,7 @@
             this.splitContainer1.Panel2.Controls.Add(this.SurnameTextBox);
             this.splitContainer1.Panel2MinSize = 250;
             this.splitContainer1.Size = new System.Drawing.Size(800, 450);
-            this.splitContainer1.SplitterDistance = 300;
+            this.splitContainer1.SplitterDistance = 309;
             this.splitContainer1.TabIndex = 13;
             // 
             // FindTextBox
@@ -343,7 +343,7 @@
             this.HelpToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(300, 24);
+            this.menuStrip.Size = new System.Drawing.Size(309, 24);
             this.menuStrip.TabIndex = 14;
             this.menuStrip.Text = "menuStrip1";
             // 
@@ -418,7 +418,7 @@
             this.panel1.Controls.Add(this.BirthdayLabel);
             this.panel1.Location = new System.Drawing.Point(3, 385);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(493, 65);
+            this.panel1.Size = new System.Drawing.Size(484, 65);
             this.panel1.TabIndex = 17;
             // 
             // BirthdayLabel
@@ -437,7 +437,7 @@
             this.PhoneTextBox.Mask = "+0 (000) 000-00-00";
             this.PhoneTextBox.Name = "PhoneTextBox";
             this.PhoneTextBox.ReadOnly = true;
-            this.PhoneTextBox.Size = new System.Drawing.Size(420, 20);
+            this.PhoneTextBox.Size = new System.Drawing.Size(411, 20);
             this.PhoneTextBox.TabIndex = 15;
             // 
             // MainForm
